@@ -1,0 +1,32 @@
+.hero {
+  display: grid;
+  grid-template-columns: 65% 35%;
+}
+
+.hero .content {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 8px;
+}
+
+.hero-subtitle {
+  color: var(--GRAY);
+  font-weight: bold;
+}
+
+.hero-heading {
+  font-size: 3rem;
+  line-height: 1em;
+}
+
+.hero .btn {
+  background-color: transparent;
+  transition: background-color 0.1s linear;
+}
+
+.hero .btn:hover {
+  background-color: var(--LIGHT-GRAY);
+}

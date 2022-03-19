@@ -6,8 +6,8 @@ import { NavLink } from "react-router-dom";
 
 const Navbar = () => {
   return (
-    <div className="header-wrapper">
-      <header className="header">
+    <div className=" header-wrapper gutter-bottom-32 ">
+      <header className="header content-width">
         <NavLink to="/" className="header-brand h2 link">
           Skill UP
         </NavLink>
@@ -26,7 +26,7 @@ const Navbar = () => {
           </ul>
         </nav>
         <div className="header-search-wrapper">
-          <label for="search">
+          <label htmlFor="search">
             <i className="fas fa-search"></i>
           </label>
           <input type="text" id="search" />
