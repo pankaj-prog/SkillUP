@@ -1,12 +1,14 @@
 import React from "react";
 import "./CategoryCard.css";
-import { NavLink } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 const CategoryCard = ({ category }) => {
   const { categoryName, img } = category;
 
+  const navigate = useNavigate();
+
   return (
-    <article className="card">
+    <article onClick={() => navigate(`/courses`)} className="card">
       <div className="img-wrapper">
         <img
           className="responsive-img"
