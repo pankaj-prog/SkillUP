@@ -10,11 +10,7 @@ const CategoryCard = ({ category }) => {
   return (
     <article onClick={() => navigate(`/courses`)} className="card">
       <div className="img-wrapper">
-        <img
-          className="responsive-img"
-          src={img}
-          alt={categoryName + "image"}
-        />
+        <img className="responsive-img" src={img} alt={categoryName} />
       </div>
       <div className="card-details text-center">
         <h1 className="card-title">{categoryName}</h1>

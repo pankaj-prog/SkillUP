@@ -23,7 +23,7 @@ const Hero = () => {
         <img
           className="responsive-img"
           src="https://github.com/pankaj-prog/Ecom-images/blob/main/More/Online%20learning.png?raw=true"
-          alt=""
+          alt="Girl studying online"
         />
       </div>
     </section>

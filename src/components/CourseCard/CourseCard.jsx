@@ -9,7 +9,7 @@ const CourseCard = ({ product }) => {
   return (
     <div onClick={() => navigate(`/courses`)} className="course-card">
       <div className="img-wrapper">
-        <img src={product.img} alt="" className="responsive-img" />
+        <img src={product.img} alt={product.title} className="responsive-img" />
       </div>
       <div className="content">
         <h4>{product.title}</h4>
