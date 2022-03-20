@@ -1,7 +1,18 @@
 import React from "react";
 
+import "./Courses.css";
+import { Banner, CoursesContainer, FilterTable } from "./components";
+
 const Courses = () => {
-  return <h1>This is Course page</h1>;
+  return (
+    <main className="">
+      <Banner />
+      <section className="main-content content-width">
+        <FilterTable />
+        <CoursesContainer />
+      </section>
+    </main>
+  );
 };
 
 export default Courses;

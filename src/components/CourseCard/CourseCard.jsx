@@ -7,7 +7,10 @@ const CourseCard = ({ product }) => {
   const navigate = useNavigate();
 
   return (
-    <div onClick={() => navigate(`/courses`)} className="course-card">
+    <div
+      onClick={() => navigate(`/course/${product._id}`)}
+      className="course-card"
+    >
       <div className="img-wrapper">
         <img src={product.img} alt={product.title} className="responsive-img" />
       </div>
