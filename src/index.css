@@ -1,8 +1,44 @@
 @import url("https://adaptiveui.netlify.app/src/components/ui-lib.css");
+@import url("https://fonts.googleapis.com/css2?family=Mukta:wght@200;300;400;500;600;700;800&display=swap");
 
 /* Reset css */
+
+* {
+  box-sizing: border-box;
+}
 
 .link {
   text-decoration: none;
   color: inherit;
+}
+
+/* bottom gutter */
+
+.gutter-bottom-8 {
+  margin-bottom: 0.5rem;
+}
+
+.gutter-bottom-16 {
+  margin-bottom: 1rem;
+}
+
+.gutter-bottom-24 {
+  margin-bottom: 1.5rem;
+}
+
+.gutter-bottom-32 {
+  margin-bottom: 2rem;
+}
+
+/*  */
+.content-width {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0px 8px;
+}
+
+/*  */
+
+body {
+  font-family: mukta;
 }

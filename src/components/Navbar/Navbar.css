@@ -1,14 +1,17 @@
 .header-wrapper {
-  box-shadow: 0px 0px 12px -4px var(--BLACK);
+  box-shadow: 0px 0px 12px -6px var(--BLACK);
 }
 
 .header {
   padding: 8px;
-  max-width: 1200px;
-  margin: 0 auto;
   align-items: center;
 }
 
 .header-nav li {
   border-bottom: 2px solid var(--WHITE);
+}
+
+.header-search-wrapper {
+  flex-grow: 1;
+  flex-shrink: 2;
 }

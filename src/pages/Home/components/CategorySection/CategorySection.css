@@ -1,0 +1,16 @@
+.categories-wrapper {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.categories-wrapper .card {
+  box-shadow: 0px 0px 8px -4px var(--GRAY);
+  border: none;
+}
+
+.categories-wrapper .card:hover {
+  box-shadow: 0px 0px 8px 0px var(--GRAY);
+  cursor: pointer;
+}
