@@ -16,6 +16,12 @@ const App = () => {
         <Route path="/signin" element={<SignIn />} />
       </Routes>
       <Footer />
+      <button
+        class="btn btn-outline-primary btn-pill btn-lg btn-float"
+        title="scroll to top"
+      >
+        <i class="fas fa-arrow-up"></i>
+      </button>
     </div>
   );
 };

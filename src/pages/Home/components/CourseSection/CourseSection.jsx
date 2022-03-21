@@ -99,10 +99,6 @@ const products = [
 ];
 
 const CourseSection = () => {
-  // const navigate = useNavigate();
-
-  // const history = useHistory();
-
   return (
     <>
       <h2 className="text-center gutter-bottom-24 section-heading">

@@ -1,0 +1,9 @@
+.courses-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(16rem, 1fr));
+  gap: 1rem;
+}
+
+.courses-container .course-card {
+  width: auto;
+}
