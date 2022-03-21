@@ -2,6 +2,9 @@
 @import url("https://fonts.googleapis.com/css2?family=Mukta:wght@200;300;400;500;600;700;800&display=swap");
 
 /* Reset css */
+:root {
+  --DARK-GRAY: #3f3f3f;
+}
 
 * {
   box-sizing: border-box;
@@ -30,6 +33,29 @@
   margin-bottom: 2rem;
 }
 
+/* buttons */
+
+.btn {
+  transition: background-color 0.1s ease;
+}
+
+.btn-solid-primary:hover {
+  background-color: var(--DARK-GRAY);
+}
+
+.btn-outline-primary:hover {
+  background-color: var(--LIGHT-GRAY);
+}
+
+.btn-outline-primary {
+  background-color: var(--WHITE);
+}
+
+/* text color blue */
+.text-link {
+  color: var(--CTA-COLOR);
+}
+
 /*  */
 .content-width {
   max-width: 1200px;
@@ -37,8 +63,16 @@
   padding: 0px 8px;
 }
 
-/*  */
+/* body */
 
 body {
   font-family: mukta;
+}
+
+/* App */
+
+.app {
+  display: grid;
+  grid-template-rows: auto 1fr auto;
+  min-height: 100vh;
 }
