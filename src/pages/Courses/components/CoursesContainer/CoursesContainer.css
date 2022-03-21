@@ -1,8 +1,6 @@
 .courses-container {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(16rem, 1fr));
-  position: sticky;
-  top: 64px;
   gap: 1rem;
 }
 

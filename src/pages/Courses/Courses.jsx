@@ -5,7 +5,7 @@ import { Banner, CoursesContainer, FilterTable } from "./components";
 
 const Courses = () => {
   return (
-    <main className="">
+    <main className="gutter-bottom-16">
       <Banner />
       <section className="main-content content-width">
         <FilterTable />

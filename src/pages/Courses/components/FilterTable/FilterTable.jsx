@@ -1,4 +1,5 @@
 import React from "react";
+import FilterInput from "./FilterInput";
 
 import "./FilterTable.css";
 
@@ -67,7 +68,7 @@ const FilterTable = () => {
       </header>
       <section className="price-group">
         <h1 className="h5">Price</h1>
-        <form action="" className="price-form">
+        <form className="price-form">
           <label htmlFor="price">
             <span>499</span>
             <span>2499</span>
@@ -85,11 +86,7 @@ const FilterTable = () => {
             {filterType.map((type) => {
               return (
                 <div className="form-input" key={type.id}>
-                  {inputType == "radio" ? (
-                    <input type="radio" name={name} id={type.id} />
-                  ) : (
-                    <input type="checkbox" id={type.id} />
-                  )}
+                  <FilterInput inputType={inputType} name={name} id={type.id} />
                   <label htmlFor={type.id}> {type.label} </label>
                 </div>
               );
