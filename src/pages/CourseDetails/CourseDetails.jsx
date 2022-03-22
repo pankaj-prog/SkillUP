@@ -59,7 +59,7 @@ const CourseDetails = () => {
           <p className="course-rating gutter-bottom-16">
             Average Rating: <span> {course.rating}/5 </span>{" "}
           </p>
-          <h5 className="">Description</h5>
+          <h5>Description</h5>
           <p className="gutter-bottom-16">{course.description}</p>
           <div className="course-cta-wrapper">
             <button className="btn btn-solid-primary">Add to Cart</button>{" "}
