@@ -20,7 +20,7 @@ const CourseWishlistCard = ({ product }) => {
       </button>
       <div className="remove-btn">
         <button className="btn icon-btn ">
-          <i class="fas fa-trash-alt"></i>
+          <i className="fas fa-trash-alt"></i>
         </button>
       </div>
     </article>

@@ -54,18 +54,18 @@ const Cart = () => {
             <CourseCartCard product={course}></CourseCartCard>
             <CourseCartCard product={course2}></CourseCartCard>{" "}
           </section>
-          <section class="cart-bill">
+          <section className="cart-bill">
             <h3 className="text-center">Cart Total</h3>
-            <div class="detail text-muted">
-              Initial price : <span class="cart-initial-price">₹8199</span>
+            <div className="detail text-muted">
+              Initial price : <span className="cart-initial-price">₹8199</span>
             </div>
-            <div class="detail text-muted">
-              Discount: <span class="cart-discount">40%</span>
+            <div className="detail text-muted">
+              Discount: <span className="cart-discount">40%</span>
             </div>
-            <div class="detail fw-b">
-              Final Price: <span class="cart-total-price">₹4919</span>
+            <div className="detail fw-b">
+              Final Price: <span className="cart-total-price">₹4919</span>
             </div>
-            <button class="btn btn-solid-primary">Checkout</button>
+            <button className="btn btn-solid-primary">Checkout</button>
           </section>
         </div>
       </div>
