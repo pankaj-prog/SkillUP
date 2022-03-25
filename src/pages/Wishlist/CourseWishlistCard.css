@@ -1,0 +1,50 @@
+.course-wishlist-card {
+  max-width: 800px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  grid-template-areas: "image image image content content content content content price add-to-cart-btn add-to-cart-btn remove-btn ";
+  gap: 1rem;
+  align-items: center;
+  box-shadow: 2px 2px 6px -4px var(--GRAY);
+}
+
+.course-wishlist-card .img-wrapper {
+  grid-area: image;
+}
+
+.course-wishlist-card img {
+  margin: auto;
+  height: 90%;
+  width: 90%;
+  object-fit: center;
+}
+
+.course-wishlist-card .content {
+  grid-area: content;
+}
+
+.course-wishlist-card .content:hover {
+  cursor: pointer;
+}
+
+.course-wishlist-card .content:hover .link {
+  color: var(--GRAY);
+}
+
+.course-wishlist-card .price {
+  grid-area: price;
+}
+
+.course-wishlist-card .add-to-cart-btn {
+  grid-area: add-to-cart-btn;
+}
+
+.course-wishlist-card .remove-btn {
+  grid-area: remove-btn;
+}
+
+.course-wishlist-card .icon-btn {
+  background-color: var(--ERROR-BG);
+  color: var(--ERROR);
+}

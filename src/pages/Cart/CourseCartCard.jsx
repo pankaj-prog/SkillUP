@@ -21,7 +21,7 @@ const CourseCartCard = ({ product }) => {
       <div className="price text-center fw-b">₹{product.originalPrice}</div>
       <div className="remove-btn">
         <button className="btn icon-btn" title="Remove from cart">
-          <i class="fas fa-trash-alt"></i>
+          <i className="fas fa-trash-alt"></i>
         </button>
       </div>
     </article>

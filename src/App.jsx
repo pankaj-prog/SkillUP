@@ -18,10 +18,10 @@ const App = () => {
       </Routes>
       <Footer />
       <button
-        class="btn btn-outline-primary btn-pill btn-lg btn-float"
+        className="btn btn-outline-primary btn-pill btn-lg btn-float"
         title="scroll to top"
       >
-        <i class="fas fa-arrow-up"></i>
+        <i className="fas fa-arrow-up"></i>
       </button>
     </div>
   );
