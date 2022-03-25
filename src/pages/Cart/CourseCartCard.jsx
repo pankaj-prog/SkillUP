@@ -1,16 +1,17 @@
 import React from "react";
 import "./CourseCartCard.css";
-import { useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 const CourseCartCard = ({ product }) => {
-  const navigate = useNavigate();
   return (
     <article className="course-cart-card">
       <div className="img-wrapper">
         <img src={product.img} alt={product.title} />
       </div>
-      <div className="content">
-        <h4 onClick={() => navigate("/course")}>{product.title}</h4>
+      <div className="content h4">
+        <Link to="/course" className="link">
+          {product.title}
+        </Link>
       </div>
       <div className="quantity-wrapper">
         <button className="btn icon-btn">+</button>

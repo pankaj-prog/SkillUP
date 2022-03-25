@@ -30,7 +30,7 @@
   cursor: pointer;
 }
 
-.course-cart-card .content:hover h4 {
+.course-cart-card .content:hover .link {
   color: var(--GRAY);
 }
 
