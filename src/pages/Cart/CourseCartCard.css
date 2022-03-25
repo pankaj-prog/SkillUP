@@ -1,0 +1,69 @@
+.course-cart-card {
+  padding: 0.5rem;
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  align-items: center;
+  gap: 1.5rem;
+  grid-template-areas: "image image image title title title title title title quantity price button";
+  box-shadow: 2px 2px 6px -4px var(--GRAY);
+}
+
+.course-cart-card .img-wrapper {
+  grid-area: image;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.course-cart-card img {
+  margin: auto;
+  height: 90%;
+  width: 90%;
+  object-fit: center;
+}
+
+.course-cart-card .content {
+  grid-area: title;
+}
+
+.course-cart-card .content:hover {
+  cursor: pointer;
+}
+
+.course-cart-card .content:hover .link {
+  color: var(--GRAY);
+}
+
+.course-cart-card .quantity-wrapper {
+  display: flex;
+  flex-direction: column;
+  max-width: 4ch;
+  grid-area: quantity;
+}
+
+.course-cart-card .quantity-wrapper input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+}
+
+.course-cart-card .quantity-wrapper .btn {
+  font-size: 1.1em;
+  padding: 0;
+}
+
+.course-cart-card .quantity-wrapper .btn:hover {
+  color: var(--GRAY);
+}
+
+.course-cart-card .price {
+  grid-area: price;
+  min-width: 7ch;
+}
+
+.course-cart-card .remove-button {
+  grid-area: button;
+  color: var(--GRAY);
+}
+
+.course-cart-card .remove-button:hover {
+  color: var(--RED);
+}
