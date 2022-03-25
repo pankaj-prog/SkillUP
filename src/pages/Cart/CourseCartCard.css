@@ -59,11 +59,11 @@
   min-width: 7ch;
 }
 
-.course-cart-card .remove-button {
+.course-cart-card .remove-btn {
   grid-area: button;
-  color: var(--GRAY);
 }
 
-.course-cart-card .remove-button:hover {
-  color: var(--RED);
+.course-cart-card .remove-btn .btn {
+  color: var(--ERROR);
+  background-color: var(--ERROR-BG);
 }

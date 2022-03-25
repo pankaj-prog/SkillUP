@@ -19,9 +19,11 @@ const CourseCartCard = ({ product }) => {
         <button className="btn icon-btn">-</button>
       </div>
       <div className="price text-center fw-b">₹{product.originalPrice}</div>
-      <button className="btn icon-btn remove-button" title="Remove from cart">
-        <i class="fas fa-times"></i>
-      </button>
+      <div className="remove-btn">
+        <button className="btn icon-btn" title="Remove from cart">
+          <i class="fas fa-trash-alt"></i>
+        </button>
+      </div>
     </article>
   );
 };
