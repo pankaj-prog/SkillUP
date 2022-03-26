@@ -1,0 +1,116 @@
+.auth-box {
+  width: fit-content;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 1rem;
+  margin: 0 auto;
+  box-shadow: 0 0 10px -2px var(--GRAY);
+}
+
+.auth-box-heading {
+  padding: 1.5rem;
+}
+
+.auth-form {
+  padding: 1.5rem;
+  border-top: 1px solid var(--LIGHT-GRAY);
+  display: flex;
+  width: fit-content;
+  max-width: 42ch;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.auth-form .form-btn {
+  font-size: 1rem;
+  padding: 0.8rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.5s ease;
+}
+
+.auth-form .social-btn {
+  background-color: var(--OFFWHITE);
+  border: 1px solid var(--GRAY);
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}
+
+.auth-form .social-btn:hover {
+  background-color: var(--LIGHT-GRAY);
+}
+
+.auth-form .form-guide {
+  margin-top: 1rem;
+  text-align: center;
+}
+
+.auth-form .form-alert {
+  text-align: center;
+}
+
+.auth-form .auth-btn {
+  background-color: var(--BLACK);
+  color: var(--WHITE);
+  border: NONE;
+}
+
+.fa-google {
+  background: linear-gradient(
+    171deg,
+    rgba(255, 0, 0, 1) 0%,
+    rgba(251, 0, 0, 1) 23%,
+    rgba(248, 249, 0, 1) 40%,
+    rgba(16, 0, 255, 1) 54%,
+    rgba(0, 14, 255, 1) 100%
+  );
+
+  -webkit-background-clip: text;
+  color: transparent;
+}
+
+.fa-facebook {
+  color: blue;
+}
+
+.auth-form .input-container {
+  font-size: 1rem;
+  border: 1px solid var(--BLACK);
+  padding: 0.8rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.auth-form .input-container i {
+  color: var(--GRAY);
+}
+
+.auth-form .input-container input {
+  font-size: 1rem;
+  min-width: 30ch;
+  outline: none;
+  border: none;
+}
+
+.auth-form .checkbox-input-container {
+  padding: 0.8rem 0;
+}
+
+.auth-form .checkbox {
+  width: 1rem;
+  height: 1rem;
+}
+
+.auth-form .btn-forgot-password {
+  align-self: center;
+}
+
+.auth-box-footer {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
