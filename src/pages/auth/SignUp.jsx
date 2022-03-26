@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 
 const SignUp = () => {
   return (
-    <main className="gutter-bottom-32">
+    <main className="gutter-bottom-32 auth-main-wrapper">
       <section className="auth-box">
         <h1 className="auth-box-heading h4">Sign up and start learning</h1>
         <form action="" className="auth-form">
@@ -41,7 +41,7 @@ const SignUp = () => {
             />
           </div>
           <div className="checkbox-input-container">
-            <input type="checkbox" className="checkbox" name="" id="checkbox" />
+            <input type="checkbox" className="checkbox" name="" id="checkbox" />{" "}
             <label htmlFor="checkbox">
               I’m in for emails with exciting discounts and personalized
               recommendations
@@ -50,7 +50,7 @@ const SignUp = () => {
           <button type="button" className="auth-btn form-btn">
             Sign up
           </button>
-          <p className="text-muted text-sm form-alert">
+          <p className="text-muted text-sm form-alert text-center">
             By signing up, you agree to our Terms of Use and Privacy Policy.
           </p>
         </form>

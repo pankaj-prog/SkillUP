@@ -5,23 +5,10 @@ import "./auth.css";
 
 const SignIn = () => {
   return (
-    <main className="gutter-bottom-32">
+    <main className="gutter-bottom-32 auth-main-wrapper">
       <section className="auth-box">
         <h1 className="auth-box-heading h4">Log in to your account</h1>
         <form action="" className="auth-form">
-          <button type="button" className="social-btn form-btn">
-            <i className="fab fa-facebook"></i>
-            <a className="link" href="#">
-              Continue with facebook
-            </a>
-          </button>
-          <button type="button" className="social-btn form-btn">
-            <i className="fab fa-google"></i>
-            <a className="link" href="#">
-              Continue with Google
-            </a>
-          </button>
-          <p className="form-guide text-muted">Or login with email address</p>
           <div className="input-container">
             <label htmlFor="input-email">
               <i className="fas fa-envelope"></i>
@@ -53,16 +40,23 @@ const SignIn = () => {
           >
             Forgot password
           </button>
-        </form>
-        <footer className="auth-box-footer">
-          Don't have an account ?
-          <button className="btn btn-link-primary">
-            <Link className="link" to="/signup">
-              {" "}
-              Sign-up
-            </Link>
+          <p className="form-guide text-muted text-center">
+            Or login with test user
+          </p>
+          <button type="button" className="text-center form-btn">
+            <i className="fas fa-user"></i>
+            {""} Test User
           </button>
-        </footer>
+          <footer className="auth-box-footer">
+            Don't have an account ?
+            <button className="btn btn-link-primary">
+              <Link className="link" to="/signup">
+                {" "}
+                Sign-up
+              </Link>
+            </button>
+          </footer>
+        </form>
       </section>
     </main>
   );

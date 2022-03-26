@@ -1,3 +1,9 @@
+.auth-main-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
 .auth-box {
   width: fit-content;
   display: flex;
@@ -5,12 +11,11 @@
   justify-content: center;
   align-items: center;
   padding: 1rem;
-  margin: 0 auto;
   box-shadow: 0 0 10px -2px var(--GRAY);
 }
 
 .auth-box-heading {
-  padding: 1.5rem;
+  padding: 1rem;
 }
 
 .auth-form {
@@ -31,49 +36,10 @@
   transition: background-color 0.5s ease;
 }
 
-.auth-form .social-btn {
-  background-color: var(--OFFWHITE);
-  border: 1px solid var(--GRAY);
-  display: flex;
-  gap: 8px;
-  align-items: center;
-}
-
-.auth-form .social-btn:hover {
-  background-color: var(--LIGHT-GRAY);
-}
-
-.auth-form .form-guide {
-  margin-top: 1rem;
-  text-align: center;
-}
-
-.auth-form .form-alert {
-  text-align: center;
-}
-
 .auth-form .auth-btn {
   background-color: var(--BLACK);
   color: var(--WHITE);
   border: NONE;
-}
-
-.fa-google {
-  background: linear-gradient(
-    171deg,
-    rgba(255, 0, 0, 1) 0%,
-    rgba(251, 0, 0, 1) 23%,
-    rgba(248, 249, 0, 1) 40%,
-    rgba(16, 0, 255, 1) 54%,
-    rgba(0, 14, 255, 1) 100%
-  );
-
-  -webkit-background-clip: text;
-  color: transparent;
-}
-
-.fa-facebook {
-  color: blue;
 }
 
 .auth-form .input-container {
@@ -112,5 +78,6 @@
 .auth-box-footer {
   display: flex;
   align-items: center;
+  justify-content: center;
   gap: 0.5rem;
 }
