@@ -77,16 +77,22 @@ const filterData = [
   },
 ];
 
-const FilterTable = ({ dispatch }) => {
+const FilterTable = ({ dispatch, filterState, initialFilterState }) => {
   const priceRangeHandler = (e) => {
     dispatch({ type: "price_range", payload: e.target.value });
+  };
+
+  const clearFilters = () => {
+    dispatch({ type: "clear_filters", payload: initialFilterState });
   };
 
   return (
     <aside className="filter-table">
       <header>
         <h1 className="h4">Filter</h1>
-        <button className="btn btn-link-primary">Clear</button>
+        <button className="btn btn-link-primary" onClick={clearFilters}>
+          Clear
+        </button>
       </header>
       <section className="price-group">
         <h1 className="h5">Price</h1>
@@ -103,6 +109,7 @@ const FilterTable = ({ dispatch }) => {
             step="300"
             min="299"
             max="6000"
+            value={filterState.price}
             onChange={(e) => priceRangeHandler(e)}
           />
         </form>
@@ -122,6 +129,7 @@ const FilterTable = ({ dispatch }) => {
                     id={type.id}
                     value={type.value}
                     dispatch={dispatch}
+                    filterState={filterState}
                   />
                   <label htmlFor={type.id}> {type.label} </label>
                 </div>

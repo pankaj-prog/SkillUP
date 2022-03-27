@@ -8,9 +8,9 @@ import { filterReducer } from "./utils/filterReducer";
 import { getFilteredData } from "./utils/getFilteredData";
 
 const initialFilterState = {
-  minRating: 1,
-  minPrice: 0,
-  sortType: "",
+  rating: 0,
+  price: 0,
+  sort: "",
   category: [],
 };
 
@@ -35,7 +35,11 @@ const Courses = () => {
     <main className="gutter-bottom-16">
       <Banner />
       <section className="main-content content-width">
-        <FilterTable dispatch={dispatch} />
+        <FilterTable
+          dispatch={dispatch}
+          filterState={filterState}
+          initialFilterState={initialFilterState}
+        />
         <CoursesContainer productList={newProductList} />
       </section>
     </main>

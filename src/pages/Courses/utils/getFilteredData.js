@@ -1,13 +1,13 @@
 export const getFilteredData = (state, productList) => {
-  const { minRating, minPrice, category, sortType } = state;
+  const { rating, price, category, sort } = state;
 
   // sort by price
 
   let sortedProductList = [
     ...productList.sort((product1, product2) => {
-      if (sortType == "ascending") {
+      if (sort == "ascending") {
         return product1.discountedPrice - product2.discountedPrice;
-      } else if (sortType == "descending") {
+      } else if (sort == "descending") {
         return product2.discountedPrice - product1.discountedPrice;
       }
     }),
@@ -16,7 +16,7 @@ export const getFilteredData = (state, productList) => {
   // filter by rating
 
   let filteredData = [
-    ...sortedProductList.filter((product) => product.rating >= minRating),
+    ...sortedProductList.filter((product) => product.rating >= rating),
   ];
 
   // filter by category
@@ -33,7 +33,7 @@ export const getFilteredData = (state, productList) => {
 
   filteredData = [
     ...filteredData.filter((product) => {
-      return Number(product.discountedPrice) > minPrice;
+      return Number(product.discountedPrice) > price;
     }),
   ];
 

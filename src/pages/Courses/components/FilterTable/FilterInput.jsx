@@ -1,6 +1,6 @@
 import React from "react";
 
-const FilterInput = ({ inputType, name, id, value, dispatch }) => {
+const FilterInput = ({ inputType, name, id, value, dispatch, filterState }) => {
   const inputHandler = (e) => {
     if (e.target.checked) {
       dispatch({ type: e.target.name, payload: value });
@@ -9,9 +9,18 @@ const FilterInput = ({ inputType, name, id, value, dispatch }) => {
     }
   };
 
+  const isChecked = () => {
+    if (inputType == "checkbox") {
+      return filterState[name].includes(value);
+    } else if (inputType == "radio") {
+      return filterState[name] == value;
+    }
+  };
+
   return (
     <input
-      onClick={inputHandler}
+      onChange={inputHandler}
+      checked={isChecked()}
       type={inputType}
       id={id}
       name={name}

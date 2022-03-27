@@ -1,11 +1,20 @@
 export const filterReducer = (state, action) => {
   switch (action.type) {
     case "rating":
-      return { ...state, minRating: action.payload };
+      return {
+        ...state,
+        rating: action.payload,
+      };
     case "sort":
-      return { ...state, sortType: action.payload };
+      return {
+        ...state,
+        sort: action.payload,
+      };
     case "category":
-      return { ...state, category: [...state.category, action.payload] };
+      return {
+        ...state,
+        category: [...state.category, action.payload],
+      };
     case "uncheck_category":
       return {
         ...state,
@@ -14,7 +23,12 @@ export const filterReducer = (state, action) => {
         ],
       };
     case "price_range":
-      return { ...state, minPrice: action.payload };
+      return {
+        ...state,
+        price: action.payload,
+      };
+    case "clear_filters":
+      return { ...action.payload };
     default:
       throw new Error(`unknown action type:  ${action.type}`);
   }
