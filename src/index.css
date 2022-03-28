@@ -4,6 +4,7 @@
 /* Reset css */
 :root {
   --DARK-GRAY: #3f3f3f;
+  scroll-behavior: smooth;
 }
 
 * {
