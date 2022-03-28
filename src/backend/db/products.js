@@ -23,6 +23,7 @@ export const products = [
     noOfLectures: "23",
     rating: "4.5",
     categoryName: "Business",
+    enrolledStudents: "1245",
   },
   {
     _id: uuid(),
@@ -41,6 +42,7 @@ export const products = [
     noOfLectures: "22",
     rating: "4.0",
     categoryName: "Business",
+    enrolledStudents: "526",
   },
   {
     _id: uuid(),
@@ -59,6 +61,7 @@ export const products = [
     noOfLectures: "93",
     rating: "4.2",
     categoryName: "Business",
+    enrolledStudents: "786",
   },
   {
     _id: uuid(),
@@ -77,6 +80,7 @@ export const products = [
     noOfLectures: "100",
     rating: "3.5",
     categoryName: "Business",
+    enrolledStudents: "684",
   },
   {
     _id: uuid(),
@@ -95,6 +99,7 @@ export const products = [
     noOfLectures: "79",
     rating: "3.8",
     categoryName: "Business",
+    enrolledStudents: "755",
   },
   {
     _id: uuid(),
@@ -113,6 +118,7 @@ export const products = [
     noOfLectures: "243",
     rating: "4.5",
     categoryName: "Design",
+    enrolledStudents: "841",
   },
   {
     _id: uuid(),
@@ -131,6 +137,7 @@ export const products = [
     noOfLectures: "64",
     rating: "3.0",
     categoryName: "Design",
+    enrolledStudents: "423",
   },
   {
     _id: uuid(),
@@ -149,6 +156,7 @@ export const products = [
     noOfLectures: "46",
     rating: "2.5",
     categoryName: "Design",
+    enrolledStudents: "245",
   },
   {
     _id: uuid(),
@@ -167,6 +175,7 @@ export const products = [
     noOfLectures: "55",
     rating: "3.8",
     categoryName: "Design",
+    enrolledStudents: "489",
   },
   {
     _id: uuid(),
@@ -185,6 +194,7 @@ export const products = [
     noOfLectures: "186",
     rating: "4.2",
     categoryName: "Design",
+    enrolledStudents: "675",
   },
   {
     _id: uuid(),
@@ -203,6 +213,7 @@ export const products = [
     noOfLectures: "320",
     rating: "4.8",
     categoryName: "Development",
+    enrolledStudents: "987",
   },
   {
     _id: uuid(),
@@ -221,6 +232,7 @@ export const products = [
     noOfLectures: "155",
     rating: "4.7",
     categoryName: "Development",
+    enrolledStudents: "1105",
   },
   {
     _id: uuid(),
@@ -239,6 +251,7 @@ export const products = [
     noOfLectures: "615",
     rating: "4.9",
     categoryName: "Development",
+    enrolledStudents: "1350",
   },
   {
     _id: uuid(),
@@ -257,6 +270,7 @@ export const products = [
     noOfLectures: "542",
     rating: "4.2",
     categoryName: "Development",
+    enrolledStudents: "846",
   },
   {
     _id: uuid(),
@@ -275,6 +289,7 @@ export const products = [
     noOfLectures: "261",
     rating: "4.5",
     categoryName: "Development",
+    enrolledStudents: "746",
   },
   {
     _id: uuid(),
@@ -293,6 +308,7 @@ export const products = [
     noOfLectures: "373",
     rating: "3.5",
     categoryName: "IT + Security",
+    enrolledStudents: "482",
   },
   {
     _id: uuid(),
@@ -311,6 +327,7 @@ export const products = [
     noOfLectures: "685",
     rating: "4.2",
     categoryName: "IT + Security",
+    enrolledStudents: "357",
   },
   {
     _id: uuid(),
@@ -329,6 +346,7 @@ export const products = [
     noOfLectures: "145",
     rating: "4.8",
     categoryName: "IT + Security",
+    enrolledStudents: "1164",
   },
   {
     _id: uuid(),
@@ -347,6 +365,7 @@ export const products = [
     noOfLectures: "83",
     rating: "4.2",
     categoryName: "IT + Security",
+    enrolledStudents: "774",
   },
   {
     _id: uuid(),
@@ -365,6 +384,7 @@ export const products = [
     noOfLectures: "20 ",
     rating: "3.5",
     categoryName: "IT + Security",
+    enrolledStudents: "366",
   },
   {
     _id: uuid(),
@@ -383,6 +403,7 @@ export const products = [
     noOfLectures: "65",
     rating: "4.5",
     categoryName: "Marketing",
+    enrolledStudents: "1190",
   },
   {
     _id: uuid(),
@@ -401,6 +422,7 @@ export const products = [
     noOfLectures: "39",
     rating: "4.2",
     categoryName: "Marketing",
+    enrolledStudents: "468",
   },
   {
     _id: uuid(),
@@ -419,6 +441,7 @@ export const products = [
     noOfLectures: "120",
     rating: "4.5",
     categoryName: "Marketing",
+    enrolledStudents: "774",
   },
   {
     _id: uuid(),
@@ -437,6 +460,7 @@ export const products = [
     noOfLectures: "67",
     rating: "2.5",
     categoryName: "Marketing",
+    enrolledStudents: "248",
   },
   {
     _id: uuid(),
@@ -455,5 +479,6 @@ export const products = [
     noOfLectures: "65",
     rating: "3.8",
     categoryName: "Marketing",
+    enrolledStudents: "486",
   },
 ];

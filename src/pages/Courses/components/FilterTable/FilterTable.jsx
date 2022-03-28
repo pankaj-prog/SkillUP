@@ -77,13 +77,13 @@ const filterData = [
   },
 ];
 
-const FilterTable = ({ dispatch, filterState, initialFilterState }) => {
+const FilterTable = ({ filterDispatch, filterState, initialFilterState }) => {
   const priceRangeHandler = (e) => {
-    dispatch({ type: "price_range", payload: e.target.value });
+    filterDispatch({ type: "price_range", payload: e.target.value });
   };
 
   const clearFilters = () => {
-    dispatch({ type: "clear_filters", payload: initialFilterState });
+    filterDispatch({ type: "clear_filters", payload: initialFilterState });
   };
 
   return (
@@ -128,7 +128,7 @@ const FilterTable = ({ dispatch, filterState, initialFilterState }) => {
                     name={name}
                     id={type.id}
                     value={type.value}
-                    dispatch={dispatch}
+                    filterDispatch={filterDispatch}
                     filterState={filterState}
                   />
                   <label htmlFor={type.id}> {type.label} </label>

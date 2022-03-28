@@ -3,8 +3,11 @@ import React from "react";
 import "./Navbar.css";
 
 import { NavLink } from "react-router-dom";
+import { useFilter, initialFilterState } from "../../context/filterContext";
 
 const Navbar = () => {
+  const { filterDispatch } = useFilter();
+
   return (
     <div className=" header-wrapper gutter-bottom-32 ">
       <header className="header content-width">
@@ -19,7 +22,16 @@ const Navbar = () => {
               </NavLink>
             </li>
             <li>
-              <NavLink to="/courses" className="link">
+              <NavLink
+                onClick={() =>
+                  filterDispatch({
+                    type: "clear_filters",
+                    payload: initialFilterState,
+                  })
+                }
+                to="/courses"
+                className="link"
+              >
                 Courses
               </NavLink>
             </li>
