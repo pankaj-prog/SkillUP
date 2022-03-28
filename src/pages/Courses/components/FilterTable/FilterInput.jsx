@@ -1,11 +1,18 @@
 import React from "react";
 
-const FilterInput = ({ inputType, name, id, value, dispatch, filterState }) => {
+const FilterInput = ({
+  inputType,
+  name,
+  id,
+  value,
+  filterDispatch,
+  filterState,
+}) => {
   const inputHandler = (e) => {
     if (e.target.checked) {
-      dispatch({ type: e.target.name, payload: value });
+      filterDispatch({ type: e.target.name, payload: value });
     } else {
-      dispatch({ type: `uncheck_${e.target.name}`, payload: value });
+      filterDispatch({ type: `uncheck_${e.target.name}`, payload: value });
     }
   };
 

@@ -1,22 +1,16 @@
-import React, { useEffect, useReducer, useState } from "react";
-
+import React, { useEffect, useState } from "react";
 import axios from "axios";
 
 import "./Courses.css";
+
 import { Banner, CoursesContainer, FilterTable } from "./components";
-import { filterReducer } from "./utils/filterReducer";
+import { useFilter, initialFilterState } from "../../context/filterContext";
 import { getFilteredData } from "./utils/getFilteredData";
 
-const initialFilterState = {
-  rating: 0,
-  price: 0,
-  sort: "",
-  category: [],
-};
-
 const Courses = () => {
-  const [filterState, dispatch] = useReducer(filterReducer, initialFilterState);
   const [productList, setProductList] = useState([]);
+
+  const { filterDispatch, filterState } = useFilter();
 
   useEffect(() => {
     (async () => {
@@ -36,7 +30,7 @@ const Courses = () => {
       <Banner />
       <section className="main-content content-width">
         <FilterTable
-          dispatch={dispatch}
+          filterDispatch={filterDispatch}
           filterState={filterState}
           initialFilterState={initialFilterState}
         />

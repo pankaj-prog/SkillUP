@@ -1,9 +1,14 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
+import {
+  useFilter,
+  initialFilterState,
+} from "../../../../context/filterContext";
 
 import "./Hero.css";
 
 const Hero = () => {
+  const { filterDispatch } = useFilter;
   return (
     <section className="gutter-bottom-24 hero">
       <div className="content">
@@ -15,7 +20,16 @@ const Hero = () => {
           Smart learning powered by real support and mentorship.
         </p>
 
-        <NavLink to="/courses" className="btn btn-outline-primary btn-rc link">
+        <NavLink
+          onClick={() =>
+            filterDispatch({
+              type: "clear_filters",
+              payload: initialFilterState,
+            })
+          }
+          to="/courses"
+          className="btn btn-outline-primary btn-rc link"
+        >
           Explore Courses
         </NavLink>
       </div>
