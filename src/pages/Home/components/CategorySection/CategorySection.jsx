@@ -10,8 +10,12 @@ const CategorySection = () => {
 
   useEffect(() => {
     (async () => {
-      const response = await axios.get("/api/categories");
-      setCategories(response.data.categories);
+      try {
+        const response = await axios.get("/api/categories");
+        setCategories(response.data.categories);
+      } catch (error) {
+        console.log(error);
+      }
     })();
   }, []);
 
