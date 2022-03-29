@@ -1,12 +1,27 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 
 import "./Navbar.css";
 
 import { NavLink } from "react-router-dom";
 import { useFilter, initialFilterState } from "../../context/filterContext";
+import { useAuth } from "../../context/authContext";
 
 const Navbar = () => {
   const { filterDispatch } = useFilter();
+
+  const { setUser, encodedToken, setEncodedToken } = useAuth();
+  const [isUserPopupActive, setIsUserPopupActive] = useState(false);
+
+  const signOutHandler = () => {
+    setEncodedToken(null);
+    setUser(null);
+    localStorage.removeItem("encodedToken");
+    localStorage.removeItem("userName");
+  };
+
+  useEffect(() => {
+    setIsUserPopupActive(false);
+  }, [encodedToken]);
 
   return (
     <div className=" header-wrapper gutter-bottom-32 ">
@@ -50,9 +65,31 @@ const Navbar = () => {
           <NavLink to="/cart" className="btn icon-btn link">
             <i className="fas fa-shopping-cart"></i>
           </NavLink>
-          <NavLink to="/signin" className="link">
-            <button className="btn btn-solid-primary btn-rc">Sign-in</button>
-          </NavLink>
+          {encodedToken ? (
+            <div className="user-wrapper">
+              <button
+                className="btn icon-btn"
+                onClick={() => setIsUserPopupActive(!isUserPopupActive)}
+              >
+                <i className="fas fa-user"></i>
+              </button>
+              <div
+                className={isUserPopupActive ? "popup popup-active" : "popup"}
+              >
+                <button className="btn btn-link-primary">View Profile</button>
+                <button
+                  onClick={() => signOutHandler()}
+                  className="btn btn-solid-primary btn-rc"
+                >
+                  Sign out
+                </button>
+              </div>
+            </div>
+          ) : (
+            <NavLink to="/signin" className="link">
+              <button className="btn btn-solid-primary btn-rc">Sign in</button>
+            </NavLink>
+          )}
         </div>
       </header>
     </div>

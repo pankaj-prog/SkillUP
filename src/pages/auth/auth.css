@@ -51,8 +51,18 @@
   gap: 0.5rem;
 }
 
+.auth-form .input-container-error {
+  border: 1px solid var(--ERROR);
+  background-color: var(--ERROR-BG);
+}
+
 .auth-form .input-container i {
   color: var(--GRAY);
+}
+
+.auth-form .error-message {
+  color: var(--ERROR);
+  line-height: 1.1em;
 }
 
 .auth-form .input-container input {
@@ -60,6 +70,7 @@
   min-width: 30ch;
   outline: none;
   border: none;
+  background-color: transparent;
 }
 
 .auth-form .checkbox-input-container {
@@ -80,4 +91,8 @@
   align-items: center;
   justify-content: center;
   gap: 0.5rem;
+}
+
+.toast-active {
+  display: flex;
 }

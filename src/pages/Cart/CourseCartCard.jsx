@@ -9,7 +9,7 @@ const CourseCartCard = ({ product }) => {
         <img src={product.img} alt={product.title} />
       </div>
       <div className="content h4">
-        <Link to="/course" className="link">
+        <Link to={`/course/${product._id}`} className="link">
           {product.title}
         </Link>
       </div>
