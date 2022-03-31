@@ -6,6 +6,7 @@ import App from "./App";
 import { makeServer } from "./server";
 
 import { FilterProvider } from "../src/context/filterContext";
+import { AuthProvider } from "../src/context/authContext";
 
 // Call make Server
 makeServer();
@@ -13,9 +14,11 @@ makeServer();
 ReactDOM.render(
   <React.StrictMode>
     <Router>
-      <FilterProvider>
-        <App />
-      </FilterProvider>
+      <AuthProvider>
+        <FilterProvider>
+          <App />
+        </FilterProvider>
+      </AuthProvider>
     </Router>
   </React.StrictMode>,
   document.getElementById("root")

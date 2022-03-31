@@ -1,15 +1,48 @@
-import React from "react";
-import { Link } from "react-router-dom";
+import React, { useState, useEffect } from "react";
+import { Link, useNavigate } from "react-router-dom";
+import { useAuth } from "../../context/authContext";
+
+import { signInHandler } from "./utils/authHandlers";
 
 import "./auth.css";
 
 const SignIn = () => {
+  const [formState, setFormState] = useState({
+    email: "",
+    password: "",
+    isEmailValid: true,
+    isPasswordValid: true,
+  });
+
+  const navigate = useNavigate();
+
+  const { user, encodedToken, setUser, setEncodedToken } = useAuth();
+
+  const handleInputChange = (e) => {
+    setFormState({ ...formState, [e.target.name]: e.target.value });
+  };
+
+  const inputTestUser = () => {
+    setFormState({
+      email: "adarshbalik@gmail.com",
+      password: "Adarshbalik123",
+      isEmailValid: true,
+      isPasswordValid: true,
+    });
+  };
+
   return (
     <main className="gutter-bottom-32 auth-main-wrapper">
       <section className="auth-box">
         <h1 className="auth-box-heading h4">Log in to your account</h1>
         <form action="" className="auth-form">
-          <div className="input-container">
+          <div
+            className={
+              formState.isEmailValid
+                ? "input-container"
+                : "input-container input-container-error"
+            }
+          >
             <label htmlFor="input-email">
               <i className="fas fa-envelope"></i>
             </label>
@@ -18,9 +51,20 @@ const SignIn = () => {
               name="email"
               id="input-email"
               placeholder="Email"
+              value={formState.email}
+              onChange={(e) => handleInputChange(e)}
             />
           </div>
-          <div className="input-container">
+          {!formState.isEmailValid && (
+            <p className="error-message">Enter valid email address</p>
+          )}
+          <div
+            className={
+              formState.isPasswordValid
+                ? "input-container"
+                : "input-container input-container-error"
+            }
+          >
             <label htmlFor="input-password">
               <i className="fas fa-lock"></i>
             </label>
@@ -29,10 +73,31 @@ const SignIn = () => {
               name="password"
               id="input-password"
               placeholder="Password"
+              value={formState.password}
+              onChange={(e) => handleInputChange(e)}
             />
           </div>
-          <button type="button" className="btn auth-btn form-btn">
-            Log in
+          {!formState.isPasswordValid && (
+            <p className="error-message">
+              {formState.password.length >= 6
+                ? "Password must containe one uppercase letter, one smallcase letter and a number"
+                : "Password should be minimum 6 char long"}
+            </p>
+          )}
+          <button
+            onClick={() =>
+              signInHandler(
+                formState,
+                setFormState,
+                setUser,
+                setEncodedToken,
+                navigate
+              )
+            }
+            type="button"
+            className="btn auth-btn form-btn"
+          >
+            Sign in
           </button>
           <button
             type="button"
@@ -41,9 +106,13 @@ const SignIn = () => {
             Forgot password
           </button>
           <p className="form-guide text-muted text-center">
-            Or login with test user
+            Or sign in with test user
           </p>
-          <button type="button" className="text-center form-btn">
+          <button
+            onClick={() => inputTestUser()}
+            type="button"
+            className="text-center form-btn"
+          >
             <i className="fas fa-user"></i>
             {""} Test User
           </button>
