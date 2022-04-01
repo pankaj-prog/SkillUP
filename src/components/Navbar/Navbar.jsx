@@ -10,18 +10,13 @@ const Navbar = () => {
   const { filterDispatch } = useFilter();
 
   const { setUser, encodedToken, setEncodedToken } = useAuth();
-  const [isUserPopupActive, setIsUserPopupActive] = useState(false);
 
   const signOutHandler = () => {
     setEncodedToken(null);
     setUser(null);
     localStorage.removeItem("encodedToken");
-    localStorage.removeItem("userName");
+    localStorage.removeItem("user");
   };
-
-  useEffect(() => {
-    setIsUserPopupActive(false);
-  }, [encodedToken]);
 
   return (
     <div className=" header-wrapper gutter-bottom-32 ">
@@ -67,15 +62,10 @@ const Navbar = () => {
           </NavLink>
           {encodedToken ? (
             <div className="user-wrapper">
-              <button
-                className="btn icon-btn"
-                onClick={() => setIsUserPopupActive(!isUserPopupActive)}
-              >
+              <button className="btn icon-btn" id="user-wrapper">
                 <i className="fas fa-user"></i>
               </button>
-              <div
-                className={isUserPopupActive ? "popup popup-active" : "popup"}
-              >
+              <div className="popup">
                 <button className="btn btn-link-primary">View Profile</button>
                 <button
                   onClick={() => signOutHandler()}
