@@ -38,8 +38,9 @@
   gap: 1rem;
 }
 
-.header .popup-active {
+.header .user-wrapper:hover .popup {
   display: flex;
   flex-direction: column;
   position: absolute;
+  right: 0;
 }

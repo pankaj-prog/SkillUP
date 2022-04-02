@@ -37,3 +37,9 @@
   font-weight: bold;
   color: var(--RED);
 }
+
+.course-card .card-badge {
+  width: fit-content;
+  padding-right: 0.8rem;
+  box-shadow: 4px 4px 8px -4px var(--BLACK);
+}

@@ -4,24 +4,20 @@ import "./Navbar.css";
 
 import { NavLink } from "react-router-dom";
 import { useFilter, initialFilterState } from "../../context/filterContext";
-import { useAuth } from "../../context/authContext";
+import { useAuth, useCart } from "../../context/";
 
 const Navbar = () => {
   const { filterDispatch } = useFilter();
 
   const { setUser, encodedToken, setEncodedToken } = useAuth();
-  const [isUserPopupActive, setIsUserPopupActive] = useState(false);
+  const { cartProducts } = useCart();
 
   const signOutHandler = () => {
     setEncodedToken(null);
     setUser(null);
     localStorage.removeItem("encodedToken");
-    localStorage.removeItem("userName");
+    localStorage.removeItem("user");
   };
-
-  useEffect(() => {
-    setIsUserPopupActive(false);
-  }, [encodedToken]);
 
   return (
     <div className=" header-wrapper gutter-bottom-32 ">
@@ -62,20 +58,19 @@ const Navbar = () => {
           <NavLink to="/wishlist" className="btn icon-btn link">
             <i className="far fa-heart"></i>
           </NavLink>
-          <NavLink to="/cart" className="btn icon-btn link">
-            <i className="fas fa-shopping-cart"></i>
+          <NavLink
+            to="/cart"
+            className="btn icon-btn link badge-container icon-container"
+          >
+            <i className="fas fa-shopping-cart "></i>
+            {encodedToken && <span class="badge">{cartProducts.length}</span>}
           </NavLink>
           {encodedToken ? (
             <div className="user-wrapper">
-              <button
-                className="btn icon-btn"
-                onClick={() => setIsUserPopupActive(!isUserPopupActive)}
-              >
+              <button className="btn icon-btn" id="user-wrapper">
                 <i className="fas fa-user"></i>
               </button>
-              <div
-                className={isUserPopupActive ? "popup popup-active" : "popup"}
-              >
+              <div className="popup">
                 <button className="btn btn-link-primary">View Profile</button>
                 <button
                   onClick={() => signOutHandler()}

@@ -9,7 +9,7 @@ const CourseCard = ({ product }) => {
   return (
     <div
       onClick={() => navigate(`/course/${product._id}`)}
-      className="course-card"
+      className="course-card badge-container"
     >
       <div className="img-wrapper">
         <img src={product.img} alt={product.title} className="responsive-img" />
@@ -24,6 +24,7 @@ const CourseCard = ({ product }) => {
           <span className="original-price">Rs. {product.originalPrice}</span>
         </div>
       </div>
+      <span class="card-badge"> {product.rating} </span>
     </div>
   );
 };

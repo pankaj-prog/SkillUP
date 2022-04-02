@@ -1,34 +1,18 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
-import { useParams } from "react-router-dom";
-import { v4 as uuid } from "uuid";
+import { useParams, useNavigate } from "react-router-dom";
 
 import "./CourseDetails.css";
-
-// dummy data
-const course = {
-  _id: uuid(),
-  title: "How to Raise Over $10M In Crowdfunding",
-  subTitle:
-    "Startup Survivor & Drone Pioneer, Thomas Agaraté Will Teach You the 'Copy-and-Paste' for Crowdfunding Success a $1 Million Dollar Success",
-  description:
-    "Customers are buying online more than ever and crowdfunding is at its peak. Don't wait! This detailed course explains startup survivor and drone pioneer, Thomas Agaraté's winning method from A to Z. It actually took him 5 years to learn and discover all the skills shown in this course, so whatever your marketing skills, you’ll get tons of value. You'll learn a tested and proven formula. Thomas' method has been used over and over again, with consistent awesome results. Campaigners who used this method raised 5 to 20x more. So if you wanna be one of them, this is the right place for you. Get simple tools and processes you can follow and execute like a professional.",
-  img: "https://github.com/pankaj-prog/Ecom-images/blob/main/Business/crowdfunding.jpg?raw=true",
-  originalPrice: "4999",
-  discountedPrice: "1899",
-  discount: "62",
-  createdBy: "Crowdfunding Value Bomb",
-  language: ["English"],
-  duration: "2h 10m",
-  noOfLectures: "23",
-  rating: "4.5",
-  categoryName: "Business",
-};
+import { useCart, useAuth } from "../../context";
 
 const CourseDetails = () => {
   const { productId } = useParams();
+  const navigate = useNavigate();
   const [product, setProduct] = useState(null);
   const [message, setMessage] = useState("loading....");
+
+  const { encodedToken } = useAuth();
+  const { cartProducts, setCartProducts, cartHandlers } = useCart();
 
   useEffect(() => {
     (async () => {
@@ -37,7 +21,7 @@ const CourseDetails = () => {
         if (response.data.product) {
           setProduct(response.data.product);
         } else {
-          setMessage("product not found");
+          setMessage("Product not found 😢");
         }
       } catch (error) {
         console.log(error);
@@ -57,6 +41,18 @@ const CourseDetails = () => {
       rating,
       description,
     } = product;
+
+    const addToCartHandler = () => {
+      if (encodedToken) {
+        cartHandlers.addToCart(product, encodedToken, setCartProducts);
+      } else {
+        if (
+          confirm("You must login to access cart. Redirect to signin page?")
+        ) {
+          navigate("/signin");
+        }
+      }
+    };
 
     return (
       <main className="content-width">
@@ -92,7 +88,21 @@ const CourseDetails = () => {
             <h5>Description</h5>
             <p className="gutter-bottom-16">{description}</p>
             <div className="course-cta-wrapper">
-              <button className="btn btn-solid-primary">Add to Cart</button>{" "}
+              {cartHandlers.isProductInCart(product, cartProducts) ? (
+                <button
+                  className="btn btn-solid-primary"
+                  onClick={() => navigate("/cart")}
+                >
+                  Go to Cart{" "}
+                </button>
+              ) : (
+                <button
+                  className="btn btn-solid-primary"
+                  onClick={addToCartHandler}
+                >
+                  Add to Cart
+                </button>
+              )}{" "}
               <button className="btn btn-outline-primary">
                 Add to Wishlist
               </button>
@@ -105,7 +115,7 @@ const CourseDetails = () => {
 
   return (
     <main>
-      <div className="content-width text-center">{message}</div>
+      <h3 className="content-width text-center">{message}</h3>
     </main>
   );
 };
