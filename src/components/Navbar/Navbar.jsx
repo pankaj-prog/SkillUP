@@ -4,12 +4,13 @@ import "./Navbar.css";
 
 import { NavLink } from "react-router-dom";
 import { useFilter, initialFilterState } from "../../context/filterContext";
-import { useAuth } from "../../context/authContext";
+import { useAuth, useCart } from "../../context/";
 
 const Navbar = () => {
   const { filterDispatch } = useFilter();
 
   const { setUser, encodedToken, setEncodedToken } = useAuth();
+  const { cartProducts } = useCart();
 
   const signOutHandler = () => {
     setEncodedToken(null);
@@ -57,8 +58,12 @@ const Navbar = () => {
           <NavLink to="/wishlist" className="btn icon-btn link">
             <i className="far fa-heart"></i>
           </NavLink>
-          <NavLink to="/cart" className="btn icon-btn link">
-            <i className="fas fa-shopping-cart"></i>
+          <NavLink
+            to="/cart"
+            className="btn icon-btn link badge-container icon-container"
+          >
+            <i className="fas fa-shopping-cart "></i>
+            {encodedToken && <span class="badge">{cartProducts.length}</span>}
           </NavLink>
           {encodedToken ? (
             <div className="user-wrapper">

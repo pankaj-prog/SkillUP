@@ -32,3 +32,10 @@
   display: flex;
   justify-content: space-between;
 }
+
+.signin-message-wrapper {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  height: 100%;
+}
