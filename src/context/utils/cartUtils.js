@@ -70,31 +70,54 @@ const productQuantityHandler = async (
   setCartProducts,
   type
 ) => {
-  try {
-    const response = await axios.post(
-      `/api/user/cart/${product._id}`,
-      {
-        action: {
-          type,
-        },
-      },
-      {
-        headers: {
-          authorization: encodedToken,
-        },
+  if (type == "decrement" && product.qty == 1) {
+    if (
+      confirm(
+        "Following product will be removed from the cart. Are you sure you want to continue ?"
+      )
+    ) {
+      try {
+        const response = await axios.delete(`/api/user/cart/${product._id}`, {
+          headers: {
+            authorization: encodedToken,
+          },
+        });
+        if (response.status == 200) {
+          setCartProducts(response.data.cart);
+        } else {
+          console.log("error from get cart", response.status);
+        }
+      } catch (error) {
+        console.log(error);
       }
-    );
-    if (response.status == 200) {
-      console.log("response from qunaity handler", response);
-      setCartProducts(response.data.cart);
-    } else {
-      console.log(
-        "error from product quantity handler with status",
-        response.status
-      );
     }
-  } catch (error) {
-    console.log(error);
+  } else {
+    try {
+      const response = await axios.post(
+        `/api/user/cart/${product._id}`,
+        {
+          action: {
+            type,
+          },
+        },
+        {
+          headers: {
+            authorization: encodedToken,
+          },
+        }
+      );
+      if (response.status == 200) {
+        console.log("response from qunaity handler", response);
+        setCartProducts(response.data.cart);
+      } else {
+        console.log(
+          "error from product quantity handler with status",
+          response.status
+        );
+      }
+    } catch (error) {
+      console.log(error);
+    }
   }
 };
 

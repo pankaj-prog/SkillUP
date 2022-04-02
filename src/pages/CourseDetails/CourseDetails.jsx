@@ -42,6 +42,18 @@ const CourseDetails = () => {
       description,
     } = product;
 
+    const addToCartHandler = () => {
+      if (encodedToken) {
+        cartHandlers.addToCart(product, encodedToken, setCartProducts);
+      } else {
+        if (
+          confirm("You must login to access cart. Redirect to signin page?")
+        ) {
+          navigate("/signin");
+        }
+      }
+    };
+
     return (
       <main className="content-width">
         <h3 className="section-heading gutter-bottom-16 text-center">
@@ -86,13 +98,7 @@ const CourseDetails = () => {
               ) : (
                 <button
                   className="btn btn-solid-primary"
-                  onClick={() =>
-                    cartHandlers.addToCart(
-                      product,
-                      encodedToken,
-                      setCartProducts
-                    )
-                  }
+                  onClick={addToCartHandler}
                 >
                   Add to Cart
                 </button>
