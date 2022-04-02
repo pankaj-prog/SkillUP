@@ -9,7 +9,6 @@ import { useNavigate } from "react-router-dom";
 const Cart = () => {
   const { encodedToken } = useAuth();
   const { cartProducts, setCartProducts } = useCart();
-  console.log("cart products list ", cartProducts);
   const navigate = useNavigate();
 
   return (
@@ -39,7 +38,7 @@ const Cart = () => {
                 className="btn btn-solid-primary"
                 onClick={() => navigate("/courses")}
               >
-                Shop now
+                Start Shopping
               </button>
             </div>
           )}{" "}

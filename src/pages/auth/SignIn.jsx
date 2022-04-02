@@ -14,6 +14,9 @@ const SignIn = () => {
     isPasswordValid: true,
   });
 
+  const [isPasswordCorrect, setIsPasswordCorrect] = useState(true);
+  const [isUserFound, setIsUserFound] = useState(true);
+
   const navigate = useNavigate();
 
   const { user, encodedToken, setUser, setEncodedToken } = useAuth();
@@ -84,6 +87,17 @@ const SignIn = () => {
                 : "Password should be minimum 6 char long"}
             </p>
           )}
+          {!isPasswordCorrect && (
+            <span className="error-message">
+              The email or passowrd you have entered is incorrect. Please try
+              again
+            </span>
+          )}
+          {!isUserFound && (
+            <span className="error-message">
+              Email is not valid, either try again or signup.
+            </span>
+          )}
           <button
             onClick={() =>
               signInHandler(
@@ -91,6 +105,8 @@ const SignIn = () => {
                 setFormState,
                 setUser,
                 setEncodedToken,
+                setIsPasswordCorrect,
+                setIsUserFound,
                 navigate
               )
             }

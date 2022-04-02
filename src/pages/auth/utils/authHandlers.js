@@ -42,6 +42,7 @@ export const signUpHandler = async (
       setUser(response.data.createdUser);
       setEncodedToken(response.data.encodedTokern);
       localStorage.setItem("encodedToken", response.data.encodedToken);
+      localStorage.setItem("user", response.data.createdUser.firstName);
       navigate("/");
     }
   }
@@ -52,6 +53,8 @@ export const signInHandler = async (
   setFormState,
   setUser,
   setEncodedToken,
+  setIsPasswordCorrect,
+  setIsUserFound,
   navigate
 ) => {
   // update form validation states
@@ -65,15 +68,34 @@ export const signInHandler = async (
   // post singin request only if form states are valid
 
   if (validateEmail(formState.email) && validatePassword(formState.password)) {
-    const response = await axios.post(`/api/auth/login`, {
-      email: formState.email,
-      password: formState.password,
-    });
-    if (response.status == 200) {
-      setUser(response.data.foundUser);
-      setEncodedToken(response.data.encodedToken);
-      localStorage.setItem("encodedToken", response.data.encodedToken);
-      navigate("/");
+    try {
+      const response = await axios.post(`/api/auth/login`, {
+        email: formState.email,
+        password: formState.password,
+      });
+      if (response.status == 200) {
+        setUser(response.data.foundUser);
+        setEncodedToken(response.data.encodedToken);
+        localStorage.setItem("encodedToken", response.data.encodedToken);
+        localStorage.setItem("user", response.data.foundUser.firstName);
+        navigate("/");
+      }
+    } catch (error) {
+      if (error.response.status == 401) {
+        setIsPasswordCorrect(false);
+        setFormState((formState) => ({
+          ...formState,
+          email: "",
+          password: "",
+        }));
+      } else if (error.response.status == 404) {
+        setIsUserFound(false);
+        setFormState((formState) => ({
+          ...formState,
+          email: "",
+          password: "",
+        }));
+      }
     }
   }
 };

@@ -24,7 +24,7 @@ const CourseCard = ({ product }) => {
           <span className="original-price">Rs. {product.originalPrice}</span>
         </div>
       </div>
-      <span class="card-badge"> {product.rating} </span>
+      <span className="card-badge"> {product.rating} </span>
     </div>
   );
 };

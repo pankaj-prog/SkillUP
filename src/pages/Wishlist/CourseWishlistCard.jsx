@@ -2,8 +2,30 @@ import React from "react";
 import { Link } from "react-router-dom";
 
 import "./CourseWishlistCard.css";
+import { useAuth, useCart, useWishlist } from "../../context";
 
 const CourseWishlistCard = ({ product }) => {
+  const { cartHandlers, setCartProducts } = useCart();
+  const { wishlistHandlers, setWishlistProducts } = useWishlist();
+  const { encodedToken } = useAuth();
+
+  const moveToCartHandler = () => {
+    wishlistHandlers.removeFromWishlist(
+      product,
+      encodedToken,
+      setWishlistProducts
+    );
+    cartHandlers.addToCart(product, encodedToken, setCartProducts);
+  };
+
+  const removeFromWishlistHandler = () => {
+    wishlistHandlers.removeFromWishlist(
+      product,
+      encodedToken,
+      setWishlistProducts
+    );
+  };
+
   return (
     <article className="course-wishlist-card">
       <div className="img-wrapper">
@@ -15,11 +37,14 @@ const CourseWishlistCard = ({ product }) => {
         </Link>
       </div>
       <div className="fw-b price">₹{product.originalPrice}</div>
-      <button className="btn btn-solid-primary add-to-cart-btn">
-        Add to cart
+      <button
+        className="btn btn-solid-primary add-to-cart-btn"
+        onClick={moveToCartHandler}
+      >
+        Move to cart
       </button>
       <div className="remove-btn">
-        <button className="btn icon-btn ">
+        <button className="btn icon-btn " onClick={removeFromWishlistHandler}>
           <i className="fas fa-trash-alt"></i>
         </button>
       </div>

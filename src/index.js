@@ -5,7 +5,12 @@ import "./index.css";
 import App from "./App";
 import { makeServer } from "./server";
 
-import { FilterProvider, AuthProvider, CartProvider } from "../src/context";
+import {
+  FilterProvider,
+  AuthProvider,
+  CartProvider,
+  WishlistProvider,
+} from "../src/context";
 
 // Call make Server
 makeServer();
@@ -14,11 +19,13 @@ ReactDOM.render(
   <React.StrictMode>
     <Router>
       <AuthProvider>
-        <CartProvider>
-          <FilterProvider>
-            <App />
-          </FilterProvider>
-        </CartProvider>
+        <WishlistProvider>
+          <CartProvider>
+            <FilterProvider>
+              <App />
+            </FilterProvider>
+          </CartProvider>
+        </WishlistProvider>
       </AuthProvider>
     </Router>
   </React.StrictMode>,
