@@ -2,11 +2,17 @@ import React, { useState } from "react";
 import "./CourseCartCard.css";
 import { Link } from "react-router-dom";
 
-import { useAuth, useCart } from "../../../../context";
+import { useAuth, useCart, useWishlist } from "../../../../context";
 
 const CourseCartCard = ({ product }) => {
   const { cartHandlers, setCartProducts } = useCart();
+  const { wishlistHandlers, setWishlistProducts } = useWishlist();
   const { encodedToken } = useAuth();
+
+  const moveToWishlistHandler = () => {
+    cartHandlers.removeFromCart(product, encodedToken, setCartProducts);
+    wishlistHandlers.addToWishlist(product, encodedToken, setWishlistProducts);
+  };
 
   return (
     <article className="course-cart-card">
@@ -53,6 +59,13 @@ const CourseCartCard = ({ product }) => {
         </button>
       </div>
       <div className="price text-center fw-b">₹{product.originalPrice}</div>
+      <button
+        className="btn btn-outline-primary wishlist-btn"
+        onClick={moveToWishlistHandler}
+      >
+        Move to wishlist
+      </button>
+
       <div className="remove-btn">
         <button
           className="btn icon-btn"

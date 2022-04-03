@@ -3,8 +3,8 @@
   display: grid;
   grid-template-columns: repeat(12, 1fr);
   align-items: center;
-  gap: 1.5rem;
-  grid-template-areas: "image image image title title title title title title quantity price button";
+  gap: 1.2rem;
+  grid-template-areas: "image image image title title title title quantity price wishlist wishlist button";
   box-shadow: 2px 2px 6px -4px var(--GRAY);
 }
 
@@ -63,7 +63,16 @@
   grid-area: button;
 }
 
+.course-cart-card .wishlist-btn {
+  grid-area: wishlist;
+  padding: 0.4rem 0;
+}
+
 .course-cart-card .remove-btn .btn {
   color: var(--ERROR);
   background-color: var(--ERROR-BG);
+}
+
+.course-cart-card .remove-btn:hover .btn {
+  color: var(--RED);
 }

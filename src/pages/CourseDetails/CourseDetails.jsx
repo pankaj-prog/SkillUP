@@ -3,7 +3,7 @@ import axios from "axios";
 import { useParams, useNavigate } from "react-router-dom";
 
 import "./CourseDetails.css";
-import { useCart, useAuth } from "../../context";
+import { useCart, useAuth, useWishlist } from "../../context";
 
 const CourseDetails = () => {
   const { productId } = useParams();
@@ -13,6 +13,8 @@ const CourseDetails = () => {
 
   const { encodedToken } = useAuth();
   const { cartProducts, setCartProducts, cartHandlers } = useCart();
+  const { wishlistProducts, setWishlistProducts, wishlistHandlers } =
+    useWishlist();
 
   useEffect(() => {
     (async () => {
@@ -52,6 +54,30 @@ const CourseDetails = () => {
           navigate("/signin");
         }
       }
+    };
+
+    const addToWishlistHandler = () => {
+      if (encodedToken) {
+        wishlistHandlers.addToWishlist(
+          product,
+          encodedToken,
+          setWishlistProducts
+        );
+      } else {
+        if (
+          confirm("You must login to access wishlist. Redirect to signin page?")
+        ) {
+          navigate("/signin");
+        }
+      }
+    };
+
+    const removeFromWishlistHandler = () => {
+      wishlistHandlers.removeFromWishlist(
+        product,
+        encodedToken,
+        setWishlistProducts
+      );
     };
 
     return (
@@ -103,9 +129,24 @@ const CourseDetails = () => {
                   Add to Cart
                 </button>
               )}{" "}
-              <button className="btn btn-outline-primary">
-                Add to Wishlist
-              </button>
+              {wishlistHandlers.isProductInWishlist(
+                product,
+                wishlistProducts
+              ) ? (
+                <button
+                  className="btn btn-outline-primary"
+                  onClick={removeFromWishlistHandler}
+                >
+                  Remove from Wishlist{" "}
+                </button>
+              ) : (
+                <button
+                  className="btn btn-outline-primary"
+                  onClick={addToWishlistHandler}
+                >
+                  Add to Wishlist
+                </button>
+              )}
             </div>
           </section>
         </div>

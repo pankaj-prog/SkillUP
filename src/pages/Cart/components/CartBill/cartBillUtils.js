@@ -4,6 +4,12 @@ export const cartInitialPrice = (cartProducts) => {
   }, 0);
 };
 
+export const cartTotalQuantity = (cartProducts) => {
+  return cartProducts.reduce((acc, curr) => {
+    return acc + curr.qty;
+  }, 0);
+};
+
 export const cartDiscount = (cartProducts) => {
   return cartProducts.reduce((acc, curr) => {
     return acc + (curr.originalPrice - curr.discountedPrice) * curr.qty;

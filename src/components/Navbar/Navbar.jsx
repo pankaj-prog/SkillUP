@@ -4,17 +4,22 @@ import "./Navbar.css";
 
 import { NavLink } from "react-router-dom";
 import { useFilter, initialFilterState } from "../../context/filterContext";
-import { useAuth, useCart } from "../../context/";
+import { useAuth, useCart, useWishlist } from "../../context/";
+
+import { cartTotalQuantity } from "../../pages/Cart/components/CartBill/cartBillUtils";
 
 const Navbar = () => {
   const { filterDispatch } = useFilter();
 
   const { setUser, encodedToken, setEncodedToken } = useAuth();
-  const { cartProducts } = useCart();
+  const { cartProducts, setCartProducts } = useCart();
+  const { wishlistProducts, setWishlistProducts } = useWishlist();
 
   const signOutHandler = () => {
     setEncodedToken(null);
     setUser(null);
+    setWishlistProducts([]);
+    setCartProducts([]);
     localStorage.removeItem("encodedToken");
     localStorage.removeItem("user");
   };
@@ -55,15 +60,23 @@ const Navbar = () => {
           <input type="text" id="search" />
         </div>
         <div id="header-ctas" className="header-ctas">
-          <NavLink to="/wishlist" className="btn icon-btn link">
-            <i className="far fa-heart"></i>
+          <NavLink
+            to="/wishlist"
+            className="btn icon-btn link badge-container icon-container"
+          >
+            <i className="fas fa-heart"></i>
+            {encodedToken && (
+              <span className="badge">{wishlistProducts.length}</span>
+            )}
           </NavLink>
           <NavLink
             to="/cart"
             className="btn icon-btn link badge-container icon-container"
           >
             <i className="fas fa-shopping-cart "></i>
-            {encodedToken && <span class="badge">{cartProducts.length}</span>}
+            {encodedToken && (
+              <span className="badge">{cartTotalQuantity(cartProducts)}</span>
+            )}
           </NavLink>
           {encodedToken ? (
             <div className="user-wrapper">
