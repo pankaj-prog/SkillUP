@@ -5,17 +5,21 @@ import "./CourseWishlistCard.css";
 import { useAuth, useCart, useWishlist } from "../../context";
 
 const CourseWishlistCard = ({ product }) => {
-  const { cartHandlers, setCartProducts } = useCart();
+  const { cartHandlers, cartProducts, setCartProducts } = useCart();
   const { wishlistHandlers, setWishlistProducts } = useWishlist();
   const { encodedToken } = useAuth();
 
-  const moveToCartHandler = () => {
-    wishlistHandlers.removeFromWishlist(
-      product,
-      encodedToken,
-      setWishlistProducts
-    );
-    cartHandlers.addToCart(product, encodedToken, setCartProducts);
+  const addToCartHandler = () => {
+    if (cartHandlers.isProductInCart(product, cartProducts)) {
+      return cartHandlers.productQuantityHandler(
+        product,
+        encodedToken,
+        setCartProducts,
+        "increment"
+      );
+    } else {
+      cartHandlers.addToCart(product, encodedToken, setCartProducts);
+    }
   };
 
   const removeFromWishlistHandler = () => {
@@ -39,9 +43,9 @@ const CourseWishlistCard = ({ product }) => {
       <div className="fw-b price">₹{product.originalPrice}</div>
       <button
         className="btn btn-solid-primary add-to-cart-btn"
-        onClick={moveToCartHandler}
+        onClick={addToCartHandler}
       >
-        Move to cart
+        Add to cart
       </button>
       <div className="remove-btn">
         <button className="btn icon-btn " onClick={removeFromWishlistHandler}>

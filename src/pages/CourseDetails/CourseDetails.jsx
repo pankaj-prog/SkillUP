@@ -72,6 +72,14 @@ const CourseDetails = () => {
       }
     };
 
+    const removeFromWishlistHandler = () => {
+      wishlistHandlers.removeFromWishlist(
+        product,
+        encodedToken,
+        setWishlistProducts
+      );
+    };
+
     return (
       <main className="content-width">
         <h3 className="section-heading gutter-bottom-16 text-center">
@@ -127,9 +135,9 @@ const CourseDetails = () => {
               ) ? (
                 <button
                   className="btn btn-outline-primary"
-                  onClick={() => navigate("/wishlist")}
+                  onClick={removeFromWishlistHandler}
                 >
-                  Go to Wishlist{" "}
+                  Remove from Wishlist{" "}
                 </button>
               ) : (
                 <button

@@ -14,8 +14,11 @@ const SignIn = () => {
     isPasswordValid: true,
   });
 
+  // below two states are only to show error messages on signin
   const [isPasswordCorrect, setIsPasswordCorrect] = useState(true);
   const [isUserFound, setIsUserFound] = useState(true);
+
+  const [showPassword, setShowPassword] = useState(false);
 
   const navigate = useNavigate();
 
@@ -72,13 +75,23 @@ const SignIn = () => {
               <i className="fas fa-lock"></i>
             </label>
             <input
-              type="password"
+              type={showPassword ? "text" : "password"}
               name="password"
               id="input-password"
               placeholder="Password"
               value={formState.password}
               onChange={(e) => handleInputChange(e)}
             />
+          </div>
+          <div className="checkbox-input-container">
+            <input
+              type="checkbox"
+              className="checkbox"
+              id="show-password"
+              checked={showPassword}
+              onChange={() => setShowPassword(!showPassword)}
+            />{" "}
+            <label htmlFor="show-password">Show password</label>
           </div>
           {!formState.isPasswordValid && (
             <p className="error-message">

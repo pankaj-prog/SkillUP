@@ -83,6 +83,7 @@ export const signInHandler = async (
     } catch (error) {
       if (error.response.status == 401) {
         setIsPasswordCorrect(false);
+        setIsUserFound(true);
         setFormState((formState) => ({
           ...formState,
           email: "",
@@ -90,6 +91,7 @@ export const signInHandler = async (
         }));
       } else if (error.response.status == 404) {
         setIsUserFound(false);
+        setIsPasswordCorrect(true);
         setFormState((formState) => ({
           ...formState,
           email: "",

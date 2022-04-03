@@ -2,13 +2,19 @@ import { useState, useEffect } from "react";
 
 import "./CartBill.css";
 import { useCart } from "../../../../context";
-import { cartDiscount, cartInitialPrice, cartTotal } from "./cartBillUtils";
+import {
+  cartDiscount,
+  cartInitialPrice,
+  cartTotal,
+  cartTotalQuantity,
+} from "./cartBillUtils";
 
 const CartBill = () => {
   const { cartProducts } = useCart();
 
   const [billDetails, setBillDetails] = useState({
     initialPrice: 0,
+    quantity: 0,
     discount: 0,
     total: 0,
   });
@@ -17,9 +23,11 @@ const CartBill = () => {
     const totalInitialPrice = cartInitialPrice(cartProducts);
     const totalDiscount = cartDiscount(cartProducts);
     const totalPrice = cartTotal(cartProducts);
+    const totalQuantity = cartTotalQuantity(cartProducts);
 
     setBillDetails({
       total: totalPrice,
+      quantity: totalQuantity,
       initialPrice: totalInitialPrice,
       discount: totalDiscount,
     });
@@ -31,6 +39,9 @@ const CartBill = () => {
       <div className="detail text-muted">
         Initial price :{" "}
         <span className="cart-initial-price">₹{billDetails.initialPrice}</span>
+      </div>
+      <div className="detail text-muted">
+        Total items : <span>{billDetails.quantity}</span>
       </div>
       <div className="detail text-muted">
         Discount: <span className="cart-discount">₹{billDetails.discount}</span>

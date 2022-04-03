@@ -6,6 +6,8 @@ import { NavLink } from "react-router-dom";
 import { useFilter, initialFilterState } from "../../context/filterContext";
 import { useAuth, useCart, useWishlist } from "../../context/";
 
+import { cartTotalQuantity } from "../../pages/Cart/components/CartBill/cartBillUtils";
+
 const Navbar = () => {
   const { filterDispatch } = useFilter();
 
@@ -73,7 +75,7 @@ const Navbar = () => {
           >
             <i className="fas fa-shopping-cart "></i>
             {encodedToken && (
-              <span className="badge">{cartProducts.length}</span>
+              <span className="badge">{cartTotalQuantity(cartProducts)}</span>
             )}
           </NavLink>
           {encodedToken ? (
