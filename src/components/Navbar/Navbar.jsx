@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 
 import "./Navbar.css";
 
-import { NavLink } from "react-router-dom";
+import { useNavigate, NavLink } from "react-router-dom";
 import { useFilter, initialFilterState } from "../../context/filterContext";
 import { useAuth, useCart, useWishlist } from "../../context/";
 
@@ -10,6 +10,7 @@ import { cartTotalQuantity } from "../../pages/Cart/components/CartBill/cartBill
 
 const Navbar = () => {
   const { filterDispatch } = useFilter();
+  const navigate = useNavigate();
 
   const { setUser, encodedToken, setEncodedToken } = useAuth();
   const { cartProducts, setCartProducts } = useCart();
@@ -22,6 +23,17 @@ const Navbar = () => {
     setCartProducts([]);
     localStorage.removeItem("encodedToken");
     localStorage.removeItem("user");
+  };
+
+  const searchHandler = (e) => {
+    console.log(e.target.value);
+    if (e.key == "Enter") {
+      filterDispatch({
+        type: "search",
+        payload: e.target.value,
+      });
+      navigate("/courses");
+    }
   };
 
   return (
@@ -57,7 +69,12 @@ const Navbar = () => {
           <label htmlFor="search">
             <i className="fas fa-search"></i>
           </label>
-          <input type="text" id="search" />
+          <input
+            placeholder="Search from all products."
+            type="text"
+            id="search"
+            onKeyUp={searchHandler}
+          />
         </div>
         <div id="header-ctas" className="header-ctas">
           <NavLink

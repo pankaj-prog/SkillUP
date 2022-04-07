@@ -1,5 +1,6 @@
 export const getFilteredData = (state, productList) => {
-  const { rating, price, category, sort } = state;
+  const { rating, price, category, sort, search } = state;
+  console.log("search from filtered data:", search);
 
   // sort by price
 
@@ -36,6 +37,15 @@ export const getFilteredData = (state, productList) => {
       return Number(product.discountedPrice) > price;
     }),
   ];
+
+  // filter by search
+
+  if (search !== "" && search !== " " && search) {
+    console.log("inside if");
+    filteredData = filteredData.filter((product) => {
+      return product.title.toLowerCase().indexOf(search.toLowerCase()) !== -1;
+    });
+  }
 
   return [...filteredData];
 };

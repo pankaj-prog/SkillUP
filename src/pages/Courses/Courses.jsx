@@ -23,6 +23,8 @@ const Courses = () => {
     })();
   }, []);
 
+  console.log(filterState);
+
   const newProductList = getFilteredData(filterState, productList);
 
   return (
