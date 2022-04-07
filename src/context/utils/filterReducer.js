@@ -1,3 +1,5 @@
+import { initialFilterState } from "../filterContext";
+
 export const filterReducer = (state, action) => {
   switch (action.type) {
     case "rating":
@@ -29,6 +31,9 @@ export const filterReducer = (state, action) => {
       };
     case "clear_filters":
       return { ...action.payload };
+    case "search":
+      console.log("payload:", action.payload);
+      return { ...initialFilterState, search: action.payload };
     default:
       throw new Error(`unknown action type:  ${action.type}`);
   }
