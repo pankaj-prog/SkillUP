@@ -13,6 +13,10 @@ import { Footer, Navbar, ScrollToTop } from "./components";
 import { Route, Routes } from "react-router-dom";
 
 const App = () => {
+  const scrollToTopHandler = () => {
+    window.scrollTo(0, 0);
+  };
+
   return (
     <div className="app">
       <Navbar />
@@ -31,6 +35,7 @@ const App = () => {
       <button
         className="btn btn-outline-primary btn-pill btn-lg btn-float"
         title="scroll to top"
+        onClick={scrollToTopHandler}
       >
         <i className="fas fa-arrow-up"></i>
       </button>
