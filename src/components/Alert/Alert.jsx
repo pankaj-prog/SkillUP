@@ -1,5 +1,4 @@
 import React, { useEffect } from "react";
-// import { useEffect } fr/om "react/cjs/react.production.min";
 import { useAlert } from "../../context";
 
 const Alert = ({ alert }) => {
