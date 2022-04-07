@@ -65,6 +65,7 @@ const removeFromCart = async (
         authorization: encodedToken,
       },
     });
+
     setCartProducts(response.data.cart);
     setAlertList((prev) => [
       ...prev,

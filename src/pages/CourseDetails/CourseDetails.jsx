@@ -4,6 +4,7 @@ import { useParams, useNavigate } from "react-router-dom";
 
 import "./CourseDetails.css";
 import { useCart, useAuth, useWishlist } from "../../context";
+import { useAlert } from "../../context/AlertContext";
 
 const CourseDetails = () => {
   const { productId } = useParams();
@@ -15,6 +16,7 @@ const CourseDetails = () => {
   const { cartProducts, setCartProducts, cartHandlers } = useCart();
   const { wishlistProducts, setWishlistProducts, wishlistHandlers } =
     useWishlist();
+  const { setAlertList } = useAlert();
 
   useEffect(() => {
     (async () => {
@@ -46,7 +48,12 @@ const CourseDetails = () => {
 
     const addToCartHandler = () => {
       if (encodedToken) {
-        cartHandlers.addToCart(product, encodedToken, setCartProducts);
+        cartHandlers.addToCart(
+          product,
+          encodedToken,
+          setCartProducts,
+          setAlertList
+        );
       } else {
         if (
           confirm("You must login to access cart. Redirect to signin page?")
@@ -61,7 +68,8 @@ const CourseDetails = () => {
         wishlistHandlers.addToWishlist(
           product,
           encodedToken,
-          setWishlistProducts
+          setWishlistProducts,
+          setAlertList
         );
       } else {
         if (
@@ -76,7 +84,8 @@ const CourseDetails = () => {
       wishlistHandlers.removeFromWishlist(
         product,
         encodedToken,
-        setWishlistProducts
+        setWishlistProducts,
+        setAlertList
       );
     };
 
