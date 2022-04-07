@@ -7,7 +7,7 @@ import { v4 as uuid } from "uuid";
 
 export const products = [
   {
-    _id: uuid(),
+    _id: "101",
     title: "How to Raise Over $10M In Crowdfunding",
     subTitle:
       "Startup Survivor & Drone Pioneer, Thomas Agaraté Will Teach You the 'Copy-and-Paste' for Crowdfunding Success a $1 Million Dollar Success",
@@ -26,7 +26,7 @@ export const products = [
     enrolledStudents: "1245",
   },
   {
-    _id: uuid(),
+    _id: "102",
     title: "Business Analysis: Working with Use Cases",
     subTitle:
       "An introductory course on use case modeling for Business Analysts or those looking to transition into a BA role.",
@@ -45,7 +45,7 @@ export const products = [
     enrolledStudents: "526",
   },
   {
-    _id: uuid(),
+    _id: "103",
     title: "How To Write A Business Plan And A Winning Business Model",
     subTitle:
       "Business plan template & business plan examples: Create a top business model & business plan for your business ideas",
@@ -64,7 +64,7 @@ export const products = [
     enrolledStudents: "786",
   },
   {
-    _id: uuid(),
+    _id: "104",
     title: "Entrepreneurship Academy: Strategize & Start A Business",
     subTitle:
       "Complete Bootcamp To Start A Business: Business Strategy, Marketing, Sales, Business Planning, Leadership, Growth",
@@ -83,7 +83,7 @@ export const products = [
     enrolledStudents: "684",
   },
   {
-    _id: uuid(),
+    _id: "105",
     title: "The Complete Introduction To Accounting and Finance",
     subTitle:
       "The Original Course on Accounting & Finance! It's easy once you know the basics. Learn introductory accounting & finance.",
@@ -102,7 +102,7 @@ export const products = [
     enrolledStudents: "755",
   },
   {
-    _id: uuid(),
+    _id: "106",
     title: "Complete Blender Creator: Learn 3D Modelling for Beginners",
     subTitle:
       "Use Blender to Create Beautiful 3D models for Video Games, 3D Printing & More. Beginners Level Course",
@@ -121,7 +121,7 @@ export const products = [
     enrolledStudents: "841",
   },
   {
-    _id: uuid(),
+    _id: "107",
     title: "The Ultimate Drawing Course - Beginner to Advanced",
     subTitle:
       "Learn the #1 most important building block of all art, Drawing. This course will teach you how to draw like a pro!",
@@ -140,7 +140,7 @@ export const products = [
     enrolledStudents: "423",
   },
   {
-    _id: uuid(),
+    _id: "108",
     title: "Photoshop Beginners Mastery: Zero to Hero in Photoshop",
     subTitle:
       "Learn Photoshop quickly and easily with essentials of Adobe Photoshop to produce beautiful images in Adobe Photoshop.",
@@ -159,7 +159,7 @@ export const products = [
     enrolledStudents: "245",
   },
   {
-    _id: uuid(),
+    _id: "109",
     title: "Design Thinking in 3 Steps",
     subTitle:
       "Understand your audience, envision a creative solution, and test your prototype",
@@ -178,7 +178,7 @@ export const products = [
     enrolledStudents: "489",
   },
   {
-    _id: uuid(),
+    _id: "110",
     title: "The complete AutoCAD 2018-21 course",
     subTitle:
       "A complete course for learning AutoCAD from scratch to professional level.",
@@ -197,7 +197,7 @@ export const products = [
     enrolledStudents: "675",
   },
   {
-    _id: uuid(),
+    _id: "111",
     title: "Machine Learning A-Z™: Hands-On Python & R In Data Science",
     subTitle:
       "Learn to create Machine Learning Algorithms in Python and R from two Data Science experts. Code templates included.",
@@ -216,7 +216,7 @@ export const products = [
     enrolledStudents: "987",
   },
   {
-    _id: uuid(),
+    _id: "112",
     title: "2022 Complete Python Bootcamp From Zero to Hero in Python",
     subTitle:
       "Learn Python like a Professional Start from the basics and go all the way to creating your own applications and games",
@@ -235,7 +235,7 @@ export const products = [
     enrolledStudents: "1105",
   },
   {
-    _id: uuid(),
+    _id: "113",
     title: "The Web Developer Bootcamp 2022",
     subTitle:
       "COMPLETELY REDONE - The only course you need to learn web development - HTML, CSS, JS, Node, and More!",
@@ -254,7 +254,7 @@ export const products = [
     enrolledStudents: "1350",
   },
   {
-    _id: uuid(),
+    _id: "114",
     title: "iOS & Swift - The Complete iOS App Development Bootcamp",
     subTitle:
       "From Beginner to iOS App Developer with Just One Course! Fully Updated with a Comprehensive Module Dedicated to SwiftUI!",
@@ -273,7 +273,7 @@ export const products = [
     enrolledStudents: "846",
   },
   {
-    _id: uuid(),
+    _id: "115",
     title: "Master the Coding Interview: Data Structures + Algorithms",
     subTitle:
       "Ultimate coding interview bootcamp. Get more job offers, negotiate a raise: Everything you need to get the job you want!",
@@ -292,7 +292,7 @@ export const products = [
     enrolledStudents: "746",
   },
   {
-    _id: uuid(),
+    _id: "116",
     title: "Ultimate AWS Certified Solutions Architect Associate 2022",
     subTitle:
       "Full Practice Exam | Learn Cloud Computing | Pass the AWS Certified Solutions Architect Associate Certification SAA-C02!",
@@ -311,7 +311,7 @@ export const products = [
     enrolledStudents: "482",
   },
   {
-    _id: uuid(),
+    _id: "117",
     title: "The Complete Networking Fundamentals Course. Your CCNA start",
     subTitle:
       "Learn about networking and start your journey to Cisco 200-301 Certification.",
@@ -330,7 +330,7 @@ export const products = [
     enrolledStudents: "357",
   },
   {
-    _id: uuid(),
+    _id: "118",
     title: "Learn Ethical Hacking From Scratch",
     subTitle:
       "Become an ethical hacker that can hack computer systems like black hat hackers and secure them like security experts.",
@@ -349,7 +349,7 @@ export const products = [
     enrolledStudents: "1164",
   },
   {
-    _id: uuid(),
+    _id: "119",
     title: "Learn Linux in 5 Days and Level Up Your Career",
     subTitle:
       "Use the in-demand Linux skills you learn in this course to get promoted or start a new career as a Linux professional.",
@@ -368,7 +368,7 @@ export const products = [
     enrolledStudents: "774",
   },
   {
-    _id: uuid(),
+    _id: "120",
     title: "IT Help Desk Professional",
     subTitle:
       "Get Hands-On Experience on Helpdesk Skills, Learn, Master & Troubleshoot All What It Takes To Get You a Job",
@@ -387,7 +387,7 @@ export const products = [
     enrolledStudents: "366",
   },
   {
-    _id: uuid(),
+    _id: "121",
     title: "Instagram Marketing 2022: Complete Guide To Instagram Growth",
     subTitle:
       "Attract Hyper-Targeted Instagram Followers, Convert Followers to Paying Customers, & Expand your Brand Using Instagram",
@@ -406,7 +406,7 @@ export const products = [
     enrolledStudents: "1190",
   },
   {
-    _id: uuid(),
+    _id: "122",
     title: "The Complete Copywriting Course : Write to Sell Like a Pro",
     subTitle:
       "Write Effective Sales Copy & Grow Your Business & Career // Access Timeless Copywriting Formulas, Templates & FREE Tools",
@@ -425,7 +425,7 @@ export const products = [
     enrolledStudents: "468",
   },
   {
-    _id: uuid(),
+    _id: "123",
     title: "SEO 2022: Complete SEO Training + SEO for WordPress Websites",
     subTitle:
       "Competitor + Keyword Research, On Page + Technical SEO, Core Web Vitals, Pagespeed, Backlinks SEO & WordPress Training",
@@ -444,7 +444,7 @@ export const products = [
     enrolledStudents: "774",
   },
   {
-    _id: uuid(),
+    _id: "124",
     title: "YouTube Masterclass - Your Complete Guide to YouTube",
     subTitle:
       "Complete guide to starting a YouTube channel, getting more views & subscribers, and building a brand with videos!",
@@ -463,7 +463,7 @@ export const products = [
     enrolledStudents: "248",
   },
   {
-    _id: uuid(),
+    _id: "125",
     title: "ClickBank Success – Affiliate Marketing Without A Website",
     subTitle:
       "Learn and model my proven system for success as a ClickBank affiliate. No hidden secrets - I reveal it all!",

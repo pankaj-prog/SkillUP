@@ -1,4 +1,5 @@
 import axios from "axios";
+import { v4 as uuid } from "uuid";
 
 const isProductInWishlist = (product, wishlistProducts) => {
   return wishlistProducts.some((item) => item._id == product._id);
@@ -12,18 +13,19 @@ const getWishlist = async (encodedToken, setWishlistProducts) => {
         authorization: encodedToken,
       },
     });
-    if (response.status == 200) {
-      setWishlistProducts(response.data.wishlist);
-    } else {
-      console.log("error from get wishlist", response.status);
-    }
+    setWishlistProducts(response.data.wishlist);
   } catch (error) {
     console.log(error);
   }
 };
 
 // add product to wishlist in backend and also updates the wishlist state
-const addToWishlist = async (product, encodedToken, setWishlistProducts) => {
+const addToWishlist = async (
+  product,
+  encodedToken,
+  setWishlistProducts,
+  setAlertList
+) => {
   try {
     const response = await axios.post(
       "/api/user/wishlist",
@@ -36,11 +38,16 @@ const addToWishlist = async (product, encodedToken, setWishlistProducts) => {
         },
       }
     );
-    if (response.status == 201) {
-      setWishlistProducts(response.data.wishlist);
-    }
+    setWishlistProducts(response.data.wishlist);
+    setAlertList((prev) => [
+      ...prev,
+      { id: uuid(), type: "success", message: "Item added to wishlist" },
+    ]);
   } catch (error) {
-    console.log(error);
+    setAlertList((prev) => [
+      ...prev,
+      { id: uuid(), type: "error", message: error.response.message },
+    ]);
   }
 };
 
@@ -49,7 +56,8 @@ const addToWishlist = async (product, encodedToken, setWishlistProducts) => {
 const removeFromWishlist = async (
   product,
   encodedToken,
-  setWishlistProducts
+  setWishlistProducts,
+  setAlertList
 ) => {
   try {
     const response = await axios.delete(`/api/user/wishlist/${product._id}`, {
@@ -57,13 +65,16 @@ const removeFromWishlist = async (
         authorization: encodedToken,
       },
     });
-    if (response.status == 200) {
-      setWishlistProducts(response.data.wishlist);
-    } else {
-      console.log("error from get wishlist", response.status);
-    }
+    setWishlistProducts(response.data.wishlist);
+    setAlertList((prev) => [
+      ...prev,
+      { id: uuid(), type: "success", message: "Item removed from wishlist" },
+    ]);
   } catch (error) {
-    console.log(error);
+    setAlertList((prev) => [
+      ...prev,
+      { id: uuid(), type: "error", message: error.response.message },
+    ]);
   }
 };
 
