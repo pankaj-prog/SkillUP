@@ -10,7 +10,7 @@ https://skillup-store.netlify.app/
 ReactJS
 
 ### Features
-- Add products to cart or wishlist from to individual product page.
+- Add products to cart or wishlist from individual product page.
 - Filter products by category, price and ratings.
 - Sort products by price.
 - Authentication: login persist on refresh through local storage.
