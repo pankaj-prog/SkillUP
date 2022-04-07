@@ -1,4 +1,5 @@
 import axios from "axios";
+import { v4 as uuid } from "uuid";
 
 // it checks whether a product is in cart or not
 const isProductInCart = (product, cartProducts) => {
@@ -13,18 +14,19 @@ const getCart = async (encodedToken, setCartProducts) => {
         authorization: encodedToken,
       },
     });
-    if (response.status == 200) {
-      setCartProducts(response.data.cart);
-    } else {
-      console.log("error from get cart", response.status);
-    }
+    setCartProducts(response.data.cart);
   } catch (error) {
     console.log(error);
   }
 };
 
 // add product to cart in backend and also updates the cart state
-const addToCart = async (product, encodedToken, setCartProducts) => {
+const addToCart = async (
+  product,
+  encodedToken,
+  setCartProducts,
+  setAlertList
+) => {
   try {
     const response = await axios.post(
       "/api/user/cart",
@@ -37,29 +39,43 @@ const addToCart = async (product, encodedToken, setCartProducts) => {
         },
       }
     );
-    if (response.status == 201) {
-      setCartProducts(response.data.cart);
-    }
+    setCartProducts(response.data.cart);
+    setAlertList((prev) => [
+      ...prev,
+      { id: uuid(), type: "success", message: "Item added to cart" },
+    ]);
   } catch (error) {
-    console.log(error);
+    setAlertList((prev) => [
+      ...prev,
+      { id: uuid(), type: "error", message: error.response.message },
+    ]);
   }
 };
 
 // it deletes an item from cart in backend and also update the cart state
-const removeFromCart = async (product, encodedToken, setCartProducts) => {
+const removeFromCart = async (
+  product,
+  encodedToken,
+  setCartProducts,
+  setAlertList
+) => {
   try {
     const response = await axios.delete(`/api/user/cart/${product._id}`, {
       headers: {
         authorization: encodedToken,
       },
     });
-    if (response.status == 200) {
-      setCartProducts(response.data.cart);
-    } else {
-      console.log("error from get cart", response.status);
-    }
+
+    setCartProducts(response.data.cart);
+    setAlertList((prev) => [
+      ...prev,
+      { id: uuid(), type: "success", message: "Item removed from cart" },
+    ]);
   } catch (error) {
-    console.log(error);
+    setAlertList((prev) => [
+      ...prev,
+      { id: uuid(), type: "error", message: error.response.message },
+    ]);
   }
 };
 
@@ -68,6 +84,7 @@ const productQuantityHandler = async (
   product,
   encodedToken,
   setCartProducts,
+  setAlertList,
   type
 ) => {
   if (type == "decrement" && product.qty == 1) {
@@ -82,13 +99,16 @@ const productQuantityHandler = async (
             authorization: encodedToken,
           },
         });
-        if (response.status == 200) {
-          setCartProducts(response.data.cart);
-        } else {
-          console.log("error from get cart", response.status);
-        }
+        setCartProducts(response.data.cart);
+        setAlertList((prev) => [
+          ...prev,
+          { id: uuid(), type: "success", message: "Item removed from cart" },
+        ]);
       } catch (error) {
-        console.log(error);
+        setAlertList((prev) => [
+          ...prev,
+          { id: uuid(), type: "error", message: error.response.message },
+        ]);
       }
     }
   } else {
@@ -106,17 +126,12 @@ const productQuantityHandler = async (
           },
         }
       );
-      if (response.status == 200) {
-        console.log("response from qunaity handler", response);
-        setCartProducts(response.data.cart);
-      } else {
-        console.log(
-          "error from product quantity handler with status",
-          response.status
-        );
-      }
+      setCartProducts(response.data.cart);
     } catch (error) {
-      console.log(error);
+      setAlertList((prev) => [
+        ...prev,
+        { id: uuid(), type: "error", message: error.response.message },
+      ]);
     }
   }
 };

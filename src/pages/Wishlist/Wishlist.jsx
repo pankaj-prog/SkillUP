@@ -7,7 +7,6 @@ import { useAuth, useWishlist } from "../../context";
 const Wishlist = () => {
   const { encodedToken } = useAuth();
   const { wishlistProducts, setWishlistProducts } = useWishlist();
-  console.log("wishlistproducts", wishlistProducts);
   const navigate = useNavigate();
 
   return (
@@ -40,7 +39,7 @@ const Wishlist = () => {
       ) : (
         <div className="signin-message-wrapper content-width">
           {" "}
-          <h3>Please login first to access the cart</h3>
+          <h3>Please login first to access the wishlist</h3>
           <button
             className="btn btn-solid-primary"
             onClick={() => navigate("/signin")}

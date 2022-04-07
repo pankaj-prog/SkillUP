@@ -2,12 +2,13 @@ import React from "react";
 import { Link } from "react-router-dom";
 
 import "./CourseWishlistCard.css";
-import { useAuth, useCart, useWishlist } from "../../context";
+import { useAlert, useAuth, useCart, useWishlist } from "../../context";
 
 const CourseWishlistCard = ({ product }) => {
   const { cartHandlers, cartProducts, setCartProducts } = useCart();
   const { wishlistHandlers, setWishlistProducts } = useWishlist();
   const { encodedToken } = useAuth();
+  const { setAlertList } = useAlert();
 
   const addToCartHandler = () => {
     if (cartHandlers.isProductInCart(product, cartProducts)) {
@@ -15,10 +16,16 @@ const CourseWishlistCard = ({ product }) => {
         product,
         encodedToken,
         setCartProducts,
+        setAlertList,
         "increment"
       );
     } else {
-      cartHandlers.addToCart(product, encodedToken, setCartProducts);
+      cartHandlers.addToCart(
+        product,
+        encodedToken,
+        setCartProducts,
+        setAlertList
+      );
     }
   };
 
@@ -26,7 +33,8 @@ const CourseWishlistCard = ({ product }) => {
     wishlistHandlers.removeFromWishlist(
       product,
       encodedToken,
-      setWishlistProducts
+      setWishlistProducts,
+      setAlertList
     );
   };
 

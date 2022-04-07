@@ -2,15 +2,21 @@ import React, { useState } from "react";
 import "./CourseCartCard.css";
 import { Link } from "react-router-dom";
 
-import { useAuth, useCart, useWishlist } from "../../../../context";
+import { useAlert, useAuth, useCart, useWishlist } from "../../../../context";
 
 const CourseCartCard = ({ product }) => {
   const { cartHandlers, setCartProducts } = useCart();
   const { wishlistHandlers, setWishlistProducts } = useWishlist();
   const { encodedToken } = useAuth();
+  const { setAlertList } = useAlert();
 
   const moveToWishlistHandler = () => {
-    cartHandlers.removeFromCart(product, encodedToken, setCartProducts);
+    cartHandlers.removeFromCart(
+      product,
+      encodedToken,
+      setCartProducts,
+      setAlertList
+    );
     wishlistHandlers.addToWishlist(product, encodedToken, setWishlistProducts);
   };
 
@@ -32,6 +38,7 @@ const CourseCartCard = ({ product }) => {
               product,
               encodedToken,
               setCartProducts,
+              setAlertList,
               "increment"
             )
           }
@@ -51,6 +58,7 @@ const CourseCartCard = ({ product }) => {
               product,
               encodedToken,
               setCartProducts,
+              setAlertList,
               "decrement"
             )
           }
@@ -71,7 +79,12 @@ const CourseCartCard = ({ product }) => {
           className="btn icon-btn"
           title="Remove from cart"
           onClick={() =>
-            cartHandlers.removeFromCart(product, encodedToken, setCartProducts)
+            cartHandlers.removeFromCart(
+              product,
+              encodedToken,
+              setCartProducts,
+              setAlertList
+            )
           }
         >
           <i className="fas fa-trash-alt"></i>

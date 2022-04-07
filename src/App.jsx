@@ -9,7 +9,7 @@ import {
   CourseDetails,
   SignUp,
 } from "./pages";
-import { Footer, Navbar, ScrollToTop } from "./components";
+import { Footer, Navbar, ScrollToTop, AlertContainer } from "./components";
 import { Route, Routes } from "react-router-dom";
 
 const App = () => {
@@ -32,6 +32,7 @@ const App = () => {
         </Routes>
       </ScrollToTop>
       <Footer />
+      <AlertContainer />
       <button
         className="btn btn-outline-primary btn-pill btn-lg btn-float"
         title="scroll to top"
