@@ -16,6 +16,7 @@ const CourseWishlistCard = ({ product }) => {
         product,
         encodedToken,
         setCartProducts,
+        setAlertList,
         "increment"
       );
     } else {
