@@ -5,3 +5,4 @@ export { default as Courses } from "./Courses/Courses";
 export { default as SignIn } from "./auth/SignIn";
 export { default as SignUp } from "./auth/SignUp";
 export { default as CourseDetails } from "./CourseDetails/CourseDetails";
+export { default as Checkout } from "./Checkout/Checkout";

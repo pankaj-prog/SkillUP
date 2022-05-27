@@ -8,6 +8,7 @@ import {
   SignIn,
   CourseDetails,
   SignUp,
+  Checkout,
 } from "./pages";
 import { Footer, Navbar, ScrollToTop, AlertContainer } from "./components";
 import { Route, Routes } from "react-router-dom";
@@ -29,6 +30,7 @@ const App = () => {
           <Route path="/wishlist" element={<Wishlist />} />
           <Route path="/signin" element={<SignIn />} />
           <Route path="/signup" element={<SignUp />} />
+          <Route path="/checkout" element={<Checkout />} />
         </Routes>
       </ScrollToTop>
       <Footer />

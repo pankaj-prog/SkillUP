@@ -8,9 +8,11 @@ import {
   cartTotal,
   cartTotalQuantity,
 } from "./cartBillUtils";
+import { useNavigate } from "react-router-dom";
 
 const CartBill = () => {
   const { cartProducts } = useCart();
+  const navigate = useNavigate();
 
   const [billDetails, setBillDetails] = useState({
     initialPrice: 0,
@@ -50,7 +52,12 @@ const CartBill = () => {
         Final Price:{" "}
         <span className="cart-total-price">₹{billDetails.total}</span>
       </div>
-      <button className="btn btn-solid-primary">Checkout</button>
+      <button
+        className="btn btn-solid-primary"
+        onClick={() => navigate("/checkout")}
+      >
+        Checkout
+      </button>
     </section>
   );
 };
