@@ -17,9 +17,6 @@ const CartBill = () => {
   const navigate = useNavigate();
   const { pathname } = useLocation();
 
-  // key secret = k3aRGNU4iSxJbKDAFW1ooPbC
-  // key id = rzp_test_MKlfphPI3ZeAEn
-
   const [billDetails, setBillDetails] = useState({
     initialPrice: 0,
     quantity: 0,

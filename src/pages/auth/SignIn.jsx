@@ -29,12 +29,20 @@ const SignIn = () => {
   };
 
   const inputTestUser = () => {
-    setFormState({
-      email: "adarshbalik@gmail.com",
-      password: "Adarshbalik123",
-      isEmailValid: true,
-      isPasswordValid: true,
-    });
+    signInHandler(
+      {
+        email: "wadhwanip38@gmail.com",
+        password: "Password123",
+        isEmailValid: true,
+        isPasswordValid: true,
+      },
+      setFormState,
+      setUser,
+      setEncodedToken,
+      setIsPasswordCorrect,
+      setIsUserFound,
+      navigate
+    );
   };
 
   return (

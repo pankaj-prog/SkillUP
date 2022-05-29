@@ -34,7 +34,7 @@ export const makePayment = async ({
   }
 
   const options = {
-    key: "rzp_test_MKlfphPI3ZeAEn",
+    key: process.env.REACT_APP_RAZORPAY_API_KEY,
     amount: price * 100,
     currency: "INR",
     name: "SkillUp_Store",
