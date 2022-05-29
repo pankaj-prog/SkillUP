@@ -1,0 +1,43 @@
+.checkout-wrapper {
+  display: grid;
+  max-width: 900px;
+  margin: 0 auto;
+  grid-template-columns: 1fr 16rem;
+  justify-content: space-between;
+  gap: 1rem;
+  overflow: hidden;
+}
+
+.checkout-section-heading {
+  padding: 8px;
+  border: 2px solid var(--LIGHT-GRAY);
+}
+
+.checkout-user-wrapper {
+  padding: 8px;
+  width: fit-content;
+  border: 1px solid var(--LIGHT-GRAY);
+}
+
+.checkout-course-card {
+  border: 1px solid var(--LIGHT-GRAY);
+  width: fit-content;
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+  padding: 4px;
+}
+
+.checkout-course-card .img-wrapper {
+  display: flex;
+  align-items: center;
+  width: 20%;
+  min-width: 8rem;
+}
+
+.checkout-course-card .title {
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  overflow: hidden;
+}
