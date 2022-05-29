@@ -41,3 +41,8 @@
   -webkit-line-clamp: 2;
   overflow: hidden;
 }
+
+.checkout-wrapper .email-input-wrapper {
+  display: flex;
+  gap: 1rem;
+}

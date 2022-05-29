@@ -1,11 +1,35 @@
-import React from "react";
+import React, { useState } from "react";
+import { v4 as uuid } from "uuid";
 import "./Checkout.css";
-import { useAuth, useCart } from "../../context";
+import { useAlert, useAuth, useCart } from "../../context";
 import { CartBill } from "../Cart/components";
 import CheckoutCourseCard from "./components/CheckoutCourseCard";
+import { useNavigate } from "react-router-dom";
+import { validateEmail } from "../auth/utils/formInputUtils";
 
 const Checkout = () => {
-  const { cartProducts, setCartProducts } = useCart();
+  const { cartProducts } = useCart();
+  const { user } = useAuth();
+  const { setAlertList } = useAlert();
+  const [isBuyingForSomeoneElse, setIsBuyingForSomeoneElse] = useState(false);
+  const [inputEmail, setInputEmail] = useState("");
+  const [isEditEmail, setIsEditEmail] = useState(true);
+  const navigate = useNavigate();
+
+  if (!(cartProducts.length > 0)) {
+    navigate("/", { replace: true });
+  }
+
+  const saveEmailHandler = () => {
+    if (validateEmail(inputEmail)) {
+      setIsEditEmail(false);
+    } else {
+      setAlertList((prev) => [
+        ...prev,
+        { id: uuid(), type: "error", message: "enter valid email address" },
+      ]);
+    }
+  };
 
   return (
     <div className="content-width">
@@ -18,10 +42,48 @@ const Checkout = () => {
             </h4>
             <p>Course details will be sent to following email address:</p>
             <p className="checkout-user-wrapper gutter-bottom-8">
-              <span className="fw-b">guestuser@gmail.com</span>
+              {isBuyingForSomeoneElse ? (
+                <div className="email-input-wrapper">
+                  {isEditEmail ? (
+                    <>
+                      <input
+                        type="email"
+                        placeholder="Email..."
+                        value={inputEmail}
+                        onChange={(e) => setInputEmail(e.target.value)}
+                      />
+                      <button
+                        className="btn btn-solid-primary"
+                        onClick={saveEmailHandler}
+                      >
+                        Save
+                      </button>
+                    </>
+                  ) : (
+                    <>
+                      <span className="fw-b">{inputEmail}</span>
+                      <button
+                        className="btn btn-solid-primary"
+                        onClick={() => setIsEditEmail(true)}
+                      >
+                        Edit
+                      </button>
+                    </>
+                  )}
+                </div>
+              ) : (
+                <span className="fw-b">{user.email}</span>
+              )}
             </p>
             <div>
-              <input type="checkbox" id="other-user" />
+              <input
+                type="checkbox"
+                id="other-user"
+                checked={isBuyingForSomeoneElse}
+                onChange={() =>
+                  setIsBuyingForSomeoneElse(!isBuyingForSomeoneElse)
+                }
+              />
               <label htmlFor="other-user">Buying course for someone else</label>
             </div>
           </section>
@@ -36,6 +98,7 @@ const Checkout = () => {
             </div>
           </section>
         </div>
+        {/* using same bill as cart */}
         <CartBill />
       </div>
     </div>
