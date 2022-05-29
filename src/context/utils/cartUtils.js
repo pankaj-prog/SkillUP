@@ -136,27 +136,10 @@ const productQuantityHandler = async (
   }
 };
 
-const clearCart = async ({ encodedToken, setAlertList, setCartProducts }) => {
-  try {
-    const response = await axios.delete("/api/user/cart", {
-      headers: {
-        authorization: encodedToken,
-      },
-    });
-    setCartProducts(response.data.cart);
-  } catch (error) {
-    setAlertList((prev) => [
-      ...prev,
-      { id: uuid(), type: "error", message: "can not clear cart" },
-    ]);
-  }
-};
-
 export const cartHandlers = {
   addToCart,
   getCart,
   removeFromCart,
   productQuantityHandler,
   isProductInCart,
-  clearCart,
 };

@@ -5,7 +5,7 @@ const AuthContext = createContext(null);
 const useAuth = () => useContext(AuthContext);
 
 const AuthProvider = ({ children }) => {
-  const [user, setUser] = useState(JSON.parse(localStorage.getItem("user")));
+  const [user, setUser] = useState(localStorage.getItem("user"));
   const [encodedToken, setEncodedToken] = useState(
     localStorage.getItem("encodedToken")
   );
