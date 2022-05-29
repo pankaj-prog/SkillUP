@@ -42,7 +42,7 @@ export const signUpHandler = async (
       setUser(response.data.createdUser);
       setEncodedToken(response.data.encodedTokern);
       localStorage.setItem("encodedToken", response.data.encodedToken);
-      localStorage.setItem("user", response.data.createdUser.firstName);
+      localStorage.setItem("user", JSON.stringify(response.data.createdUser));
       navigate("/");
     }
   }
@@ -77,7 +77,7 @@ export const signInHandler = async (
         setUser(response.data.foundUser);
         setEncodedToken(response.data.encodedToken);
         localStorage.setItem("encodedToken", response.data.encodedToken);
-        localStorage.setItem("user", response.data.foundUser.firstName);
+        localStorage.setItem("user", JSON.stringify(response.data.foundUser));
         navigate("/");
       }
     } catch (error) {
