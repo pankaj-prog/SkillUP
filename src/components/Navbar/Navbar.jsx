@@ -101,7 +101,6 @@ const Navbar = () => {
                 <i className="fas fa-user"></i>
               </button>
               <div className="popup">
-                <button className="btn btn-link-primary">View Profile</button>
                 <button
                   onClick={() => signOutHandler()}
                   className="btn btn-solid-primary btn-rc"
